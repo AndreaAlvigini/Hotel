@@ -1,7 +1,37 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
++<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!-- Il file web.xml serve per il routing, ovvero per lo smistamento delle richieste alle varie pagine -->
 
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>ClienteServlet</servlet-name>
+    <servlet-class>ClienteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ClienteServlet</servlet-name>
+    <url-pattern>/clienti</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CameraServlet</servlet-name>
+    <servlet-class>CameraServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CameraServlet</servlet-name>
+    <url-pattern>/camere</url-pattern>
+  </servlet-mapping>
+
+  <!-- <servlet>
+    <servlet-name>PrenotazioneServlet</servlet-name>
+    <servlet-class>PrenotazioneServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PrenotazioneServlet</servlet-name>
+    <url-pattern>/prenotazioni</url-pattern>
+  </servlet-mapping> -->
 </web-app>

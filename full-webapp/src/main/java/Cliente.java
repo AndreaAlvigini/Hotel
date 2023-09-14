@@ -1,28 +1,29 @@
 //Questa é una classe che rappresenta il modello di dati per Cliente e possiede solo i campi che corrispondono alle colonne nelle tabelle del database.
 public class Cliente {
-    //Specifico i campi che appartengono alla classe Cliente
+    // Specifico i campi che appartengono alla classe Cliente
     private int id;
     private String nome;
+    private String cognome;
     private String email;
 
-    //aggiungo telefono
+    // aggiungo telefono
     private String telefono;
-    //aggiunto carta_id
+    // aggiunto carta_id
     private String carta_id;
-
 
     // Costruttore vuoto
     public Cliente() {
     }
 
     // Costruttore con parametri
-    public Cliente(int id, String nome, String email, String telefono, String carta_id) {
+    public Cliente(int id, String nome, String cognome, String email, String telefono, String carta_id) {
         this.id = id;
         this.nome = nome;
+        this.cognome = cognome;
         this.email = email;
         // aggiunto carta_id costruttore
         this.carta_id = carta_id;
-         // aggiunto telefono
+        // aggiunto telefono
         this.telefono = telefono;
 
     }
@@ -44,6 +45,14 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+//aggiunto cognome getter setter
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
 
     public String getEmail() {
         return email;
@@ -62,7 +71,7 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    //GETTER e SETTER carta_id
+    // GETTER e SETTER carta_id
     public String getCarta_id() {
         return carta_id;
     }
@@ -70,6 +79,5 @@ public class Cliente {
     public void setCarta_id(String carta_id) {
         this.carta_id = carta_id;
     }
-
 
 }

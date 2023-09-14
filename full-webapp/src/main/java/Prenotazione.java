@@ -1,9 +1,10 @@
+//Questa é una classe che rappresenta il modello di dati per le Prenotazioni del nostro Hotel e possiede solo i campi che corrispondono alle colonne nelle tabelle del database.
 import java.util.Date;
 
 public class Prenotazione {
     private int id;
     private int idCliente;
-    private int idProdotto;
+    private int idCamera;
     private Date checkIn;
     private Date checkOut;
     private double totale;
@@ -11,10 +12,10 @@ public class Prenotazione {
     public Prenotazione(){
     }
 
-    public Prenotazione(int id, int idCliente, int idProdotto, Date checkIn, Date checkOut, Double totale){
+    public Prenotazione(int id, int idCliente, int idCamera, Date checkIn, Date checkOut, Double totale){
         this.id = id;
         this.idCliente = idCliente;
-        this.idProdotto = idProdotto;
+        this.idCamera = idCamera;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.totale = totale;
@@ -34,11 +35,11 @@ public class Prenotazione {
         this.idCliente = idCliente;
     }
 
-    public int getIdProdotto(){
-        return idProdotto;
+    public int getIdCamera(){
+        return idCamera;
     }
-    public void setIdProdotto(int idProdotto){
-        this.idProdotto = idProdotto;
+    public void setIdCamera(int idCamera){
+        this.idCamera = idCamera;
     }
 
     public Date getCheckIn(){

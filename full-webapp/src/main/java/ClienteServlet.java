@@ -28,7 +28,7 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         List<Cliente> clienti = clienteDAO.getAllClienti();
         request.setAttribute("clienti", clienti);
-        //AGGIUNGERE "AGGIUNGI CLIENTE"?
+        //AGGIUNGERE altri metodi?
         RequestDispatcher dispatcher = request.getRequestDispatcher("clienti.jsp");
         dispatcher.forward(request, response);
     }

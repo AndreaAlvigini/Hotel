@@ -24,6 +24,7 @@ public class ClienteDAO {
                 Cliente c = new Cliente(); //creazione oggetto Cliente
                 c.setId(rs.getInt("id")); //assegno i valori a CLiente in base alla riga del ResultSet
                 c.setNome(rs.getString("nome"));
+                c.setCognome(rs.getString("cognome"));
                 c.setCarta_id(rs.getString("carta_id"));
                 c.setEmail(rs.getString("email"));
                 c.setTelefono(rs.getString("telefono"));
