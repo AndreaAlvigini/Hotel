@@ -11,17 +11,16 @@ public class Camera{
     private String immagine;
     //aggiunto dipsonibilità
     private boolean disponibilita;
-
-    //AGGIUNGERE CAMPI BOOLEANI PER VALORI AGGIUNTIVI + GET SET
+    //AGGIUNGERE CAMPI BOOLEANI bagno
     private boolean bagno;
-
+    //AGGIUNGERE CAMPI BOOLEANI bagno
     private boolean condizionatore;
 
     // Costruttore vuoto
     public Camera(){
     }
     // Costruttore vuoto
-    public Camera(int id, String tipologia, String descrizione, Double prezzo, String immagine, boolean disponibilita){
+    public Camera(int id, String tipologia, String descrizione, Double prezzo, String immagine, boolean disponibilita, boolean bagno, boolean condizionatore){
         this.id = id;
         //aggiungiamo tipologia
         this.tipologia = tipologia;
@@ -30,6 +29,8 @@ public class Camera{
         this.immagine = immagine;
         //aggiungiamo disponibilità
         this.disponibilita = disponibilita;
+        this.bagno =bagno;
+        this.condizionatore =condizionatore;
     }
     // Getter e Setter
     public int getId() {
@@ -43,7 +44,7 @@ public class Camera{
     public String getTipologia(){
         return tipologia;
     }
-    
+
     public void setTipologia(String tipologia){
         this.tipologia = tipologia;
     }
@@ -76,6 +77,7 @@ public class Camera{
     public void setBagno(boolean bagno){
         this.bagno = bagno;
     }
+
     //aggiunto condizionatore
     public boolean getCondizionatore (){
         return condizionatore;
@@ -83,6 +85,7 @@ public class Camera{
     public void setCondizionatore(boolean condizionatore){
         this.condizionatore = condizionatore;
     }
+
     //aggiunto disponibilità
     public boolean getDisponibilita (){
         return disponibilita;
