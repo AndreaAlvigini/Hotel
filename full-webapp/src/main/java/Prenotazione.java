@@ -5,6 +5,7 @@ public class Prenotazione {
     private int id;
     private int idCliente;
     private int idCamera;
+    private int notti;
     private Date checkIn;
     private Date checkOut;
     private double totale;
@@ -12,10 +13,11 @@ public class Prenotazione {
     public Prenotazione(){
     }
 
-    public Prenotazione(int id, int idCliente, int idCamera, Date checkIn, Date checkOut, Double totale){
+    public Prenotazione(int id, int idCliente, int idCamera, int notti, Date checkIn, Date checkOut, Double totale){
         this.id = id;
         this.idCliente = idCliente;
         this.idCamera = idCamera;
+        this.notti= notti;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.totale = totale;
@@ -40,6 +42,14 @@ public class Prenotazione {
     }
     public void setIdCamera(int idCamera){
         this.idCamera = idCamera;
+    }
+
+    public int getNotti(){
+        return notti;
+    }
+
+    public void setNotti(int notti){
+        this.notti = notti;
     }
 
     public Date getCheckIn(){
