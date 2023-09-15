@@ -1,7 +1,11 @@
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrenotazioneDAO {
     private Connection conn;// connessione
@@ -54,5 +58,31 @@ public class PrenotazioneDAO {
         Camera camera = r.getCameraById(camera_id);
         double prezzo = p.calcolaPrezzo(camera.getPrezzo(), notti);
         p.inserisciPrenotazione(cliente, camera, notti, checkInDate, checkOutDate, prezzo);
+    }
+
+    public List<Prenotazione> getAllPrenotazioni() {
+        List<Prenotazione> prenotazioni = new ArrayList<>();
+
+        try (Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM prenotazioni")) {
+
+            while (rs.next()) {
+                Prenotazione p = new Prenotazione();
+                p.setId(rs.getInt("id"));
+                p.setIdCliente(rs.getInt("id_cliente"));
+                p.setIdCamera(rs.getInt("id_camera"));
+                p.setNotti(rs.getInt("notti"));
+                p.setCheckIn(rs.getDate("check_in"));
+                p.setCheckOut(rs.getDate("check_out"));
+                p.setTotale(rs.getDouble("totale"));
+                prenotazioni.add(p);
+            }
+
+        } catch (SQLException e) {
+            // gestisci l'eccezione
+            e.printStackTrace();
+        }
+
+        return prenotazioni; // riporta la lista di Camere
     }
 }

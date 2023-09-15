@@ -20,16 +20,16 @@ public class CameraDAO {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM camere")) {
 
             while (rs.next()) {
-                Camera p = new Camera(); // creazione oggetto Camera
+                Camera c = new Camera(); // creazione oggetto Camera
                 // utilizzo il metodo di Camera p per assegnare il valore all'id del Camera,
                 // leggendolo dal valore della colonna della riga corrente del ResultSet
-                p.setId(rs.getInt("id"));
-                p.setTipologia(rs.getString("tipologia"));
-                p.setDescrizione(rs.getString("descrizione"));
-                p.setPrezzo(rs.getDouble("prezzo"));
-                p.setImmagine(rs.getString("immagine"));
-                p.setDisponibilita(rs.getBoolean("disponibilita"));
-                camere.add(p);
+                c.setId(rs.getInt("id"));
+                c.setTipologia(rs.getString("tipologia"));
+                c.setDescrizione(rs.getString("descrizione"));
+                c.setPrezzo(rs.getDouble("prezzo"));
+                c.setImmagine(rs.getString("immagine"));
+                c.setDisponibilita(rs.getBoolean("disponibilita"));
+                camere.add(c);
             }
 
         } catch (SQLException e) {
@@ -42,7 +42,7 @@ public class CameraDAO {
 
     public Camera getCameraById(int id) { // metodo di selezione Camera in base all'id (in input) che restituisce un
                                           // oggetto Camera
-        Camera p = null; // creazione oggetto Camera vuoto
+        Camera c = null; // creazione oggetto Camera vuoto
 
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM camere WHERE id = ?")) { // selezione dalla
                                                                                                     // tabella prodotti
@@ -52,13 +52,13 @@ public class CameraDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) { // assegnazione dei valori all'oggetto Camera in base alla riga dell'id fornito
-                    p = new Camera();
-                    p.setId(rs.getInt("id"));
-                    p.setTipologia(rs.getString("tipologia"));
-                    p.setDescrizione(rs.getString("descrizione"));
-                    p.setPrezzo(rs.getDouble("prezzo"));
-                    p.setImmagine(rs.getString("immagine"));
-                    p.setDisponibilita(rs.getBoolean("disponibilita"));
+                    c = new Camera();
+                    c.setId(rs.getInt("id"));
+                    c.setTipologia(rs.getString("tipologia"));
+                    c.setDescrizione(rs.getString("descrizione"));
+                    c.setPrezzo(rs.getDouble("prezzo"));
+                    c.setImmagine(rs.getString("immagine"));
+                    c.setDisponibilita(rs.getBoolean("disponibilita"));
                 }
             }
 
@@ -67,18 +67,18 @@ public class CameraDAO {
             e.printStackTrace();
         }
 
-        return p; // riporta il Camera completo
+        return c; // riporta il Camera completo
     }
 
-    public void insertCamera(Camera p) { // metodo di inserimento che prende in input un Camera (p)
+    public void insertCamera(Camera c) { // metodo di inserimento che prende in input un Camera (p)
         try (PreparedStatement stmt = conn.prepareStatement(
                 "INSERT INTO camere (tipologia, descrizione, prezzo, immagine, disponibilita) VALUES (?, ?, ?, ?, ?)")) {
 
-            stmt.setString(1, p.getTipologia()); // riporto i valori nella riga della tabella prodotti
-            stmt.setString(2, p.getDescrizione());
-            stmt.setDouble(3, p.getPrezzo());
-            stmt.setString(4, p.getImmagine());
-            stmt.setBoolean(5, p.getDisponibilita());
+            stmt.setString(1, c.getTipologia()); // riporto i valori nella riga della tabella prodotti
+            stmt.setString(2, c.getDescrizione());
+            stmt.setDouble(3, c.getPrezzo());
+            stmt.setString(4, c.getImmagine());
+            stmt.setBoolean(5, c.getDisponibilita());
             stmt.executeUpdate();
         } catch (SQLException e) {
             // gestisci l'eccezione
@@ -104,16 +104,16 @@ public class CameraDAO {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM camere WHERE disponibilita = true")) {
 
             while (rs.next()) {
-                Camera p = new Camera(); // creazione oggetto Camera
+                Camera c = new Camera(); // creazione oggetto Camera
                 // utilizzo il metodo di Camera p per assegnare il valore all'id del Camera,
                 // leggendolo dal valore della colonna della riga corrente del ResultSet
-                p.setId(rs.getInt("id"));
-                p.setTipologia(rs.getString("tipologia"));
-                p.setDescrizione(rs.getString("descrizione"));
-                p.setPrezzo(rs.getDouble("prezzo"));
-                p.setImmagine(rs.getString("immagine"));
-                p.setDisponibilita(rs.getBoolean("disponibilita"));
-                camere.add(p);
+                c.setId(rs.getInt("id"));
+                c.setTipologia(rs.getString("tipologia"));
+                c.setDescrizione(rs.getString("descrizione"));
+                c.setPrezzo(rs.getDouble("prezzo"));
+                c.setImmagine(rs.getString("immagine"));
+                c.setDisponibilita(rs.getBoolean("disponibilita"));
+                camere.add(c);
             }
 
         } catch (SQLException e) {
