@@ -1,12 +1,12 @@
+```sql
 sqlite3 mydatabase.db
-        
+        -- !!!! CONTROLLARE LE KEYS perchè viene creata la tabella sqlite_sequence
         CREATE TABLE IF NOT EXISTS clienti (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         carta_id TEXT NOT NULL,
         email TEXT NOT NULL,
-        telefono TEXT NOT NULL,
-
+        telefono TEXT NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS camere (
@@ -15,7 +15,7 @@ sqlite3 mydatabase.db
         descrizione TEXT NOT NULL,
         prezzo REAL NOT NULL,
         immagine TEXT,
-        disponibilita INTEGER NOT NULL
+        disponibilita INTEGER NOT NULL --aggiungere campi boolean per servizi  camere
         );
 
         CREATE TABLE IF NOT EXISTS prenotazioni (
@@ -29,14 +29,13 @@ sqlite3 mydatabase.db
         FOREIGN KEY (id_camera) REFERENCES camere(id),
         FOREIGN KEY (id_cliente) REFERENCES clienti(id)
         );
-        ```
-    - ```
+
         INSERT INTO clienti (nome, carta_id, email, telefono)VALUES
         ('Mario Rossi', 'AX9283F', 'mario@email.com', '555-1234'),
         ('Luigi Bianchi', 'GE63820F', 'luigi@email.com', '555-5678'),
         ('Giovanna Verdi', 'UH27846G', 'giovanna@email.com', '555-9876');
 
-        INSERT INTO CAMERE (tipologia, descrizione, prezzo, immagine, disponibilita) VALUES
+        INSERT INTO CAMERE (tipologia, descrizione, prezzo, immagine, disponibilita) VALUES --aggiungere campi boolean per servizi  camere
         ('Doppia', 'Descrizione doppia', 80.99, 'immagine1.jpg', 1),
         ('Suite', 'Descrizione suite', 190.99, 'immagine2.jpg', 0),
         ('Singola', 'Descrizione singola', 70.49, 'immagine3.jpg', 1)
@@ -45,4 +44,4 @@ sqlite3 mydatabase.db
         ('2023-09-08', 1, 1, 4, 10.99),
         ('2023-09-28', 2, 1, 2, 19.99),
         ('2023-12-07', 3, 3, 3, );
-        ```
+```

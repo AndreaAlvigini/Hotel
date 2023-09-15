@@ -8,7 +8,7 @@ public class Main {
 
             // CameraDAO cameraDAO = new CameraDAO(conn);
             // ClienteDAO clienteDAO = new ClienteDAO(conn);
-            PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO(conn);
+            // PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO(conn);
 
             // // Stampa tutti i camere
             // List<Camera> camera = cameraDAO.getAllProdotti();
@@ -32,13 +32,14 @@ public class Main {
             // }
 
 
-            prenotazioneDAO.calcolaPrezzo();
+            // prenotazioneDAO.calcolaPrezzo();
             // CameraDAO cameraDAO = new CameraDAO(conn);
             // List<Camera> camera = cameraDAO.getCamereDisponibili();
             // System.out.println("Camere:");
             // for (Camera p : camera) {
             //     System.out.println(p);
             // }
+            // clienteDAO.controllaCliente("AU7654S");
 
 
         } catch (SQLException e) {
