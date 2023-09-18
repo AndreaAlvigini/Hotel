@@ -1,6 +1,6 @@
 
 
-<!-- Il file web.xml serve per il routing, ovvero per lo smistamento delle richieste alle varie pagine -->
+<!-- Il file web.xml serve per il routing, ovvero per lo smistamento delle richieste alle varie pagine, xml riguarda l'informazione e non la formattazione-->
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
