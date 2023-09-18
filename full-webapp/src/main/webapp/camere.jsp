@@ -29,11 +29,6 @@
                         
                     </c:forEach>
                 </div>
-                <div class="grid text-center">
-                    <div class="g-col-4">.g-col-4</div>
-                    <div class="g-col-4">.g-col-4</div>
-                    <div class="g-col-4">.g-col-4</div>
-                </div>
             </main>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous"></script>
