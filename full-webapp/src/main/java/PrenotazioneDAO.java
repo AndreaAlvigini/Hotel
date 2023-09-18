@@ -85,4 +85,36 @@ public class PrenotazioneDAO {
 
         return prenotazioni; // riporta la lista di Camere
     }
+
+    public List<Camera> getCamereDisponibili(Date checkIn, Date checkOut) {
+        List<Integer> idCamere = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "SELECT id_camera FROM prenotazioni WHERE check_in <= ? AND check_out >= ?";
+            
+            stmt = conn.prepareStatement(sql);
+            stmt.setDate(1, checkOut);
+            stmt.setDate(2, checkIn);
+
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                idCamere.add(rs.getInt("id_camera"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        List<Camera> camereDisponibili = new ArrayList<>();
+        CameraDAO c = new CameraDAO(conn);
+        Camera camera;
+        for (int idCamera: idCamere){
+            camera = c.getCameraById(idCamera);
+            camereDisponibili.add(camera);
+
+        }
+        return camereDisponibili;
+    }
 }
