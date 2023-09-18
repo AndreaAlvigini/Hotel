@@ -72,8 +72,8 @@ public class PrenotazioneDAO {
                 p.setIdCliente(rs.getInt("id_cliente"));
                 p.setIdCamera(rs.getInt("id_camera"));
                 p.setNotti(rs.getInt("notti"));
-                p.setCheckIn(rs.getDate("check_in"));
-                p.setCheckOut(rs.getDate("check_out"));
+                p.setCheckIn(rs.getString("check_in"));
+                p.setCheckOut(rs.getString("check_out"));
                 p.setTotale(rs.getDouble("totale"));
                 prenotazioni.add(p);
             }

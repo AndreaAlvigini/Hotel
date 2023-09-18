@@ -27,8 +27,8 @@ public class PrenotazioneServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         List<Prenotazione> prenotazioni = PrenotazioneDAO.getAllPrenotazioni();
-        request.setAttribute("prenotazioni", prenotazioni); 
+        List<Prenotazione> prenotazioni = PrenotazioneDAO.getAllPrenotazioni();
+        request.setAttribute("prenotazioni", prenotazioni);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("prenotazioni.jsp");
         dispatcher.forward(request, response);
