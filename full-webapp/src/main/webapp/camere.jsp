@@ -17,7 +17,7 @@
             <main class="container">
                 
                 <jsp:include page="header.jsp" />
-                <h1>Tutte le camere</h1>
+                <h1 style="text-align: center;">Tutte le camere</h1>
 
                 <div class="grid-container">
                     <c:forEach var="camera" items="${camere}">
