@@ -68,6 +68,7 @@ public class ClienteDAO {
                     c = new Cliente();
                     c.setId(rs.getInt("id"));
                     c.setNome(rs.getString("nome"));
+                    c.setCognome(rs.getString("cognome"));
                     c.setCarta_id(rs.getString("carta_id"));
                     c.setEmail(rs.getString("email"));
                     c.setTelefono(rs.getString("telefono"));

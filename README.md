@@ -129,11 +129,11 @@ public class Cliente {
 }
 ```
 
-- In queto codice ho aggiunto i campidi tipo String:
+- In queto codice ho aggiunto i campi di tipo String:
     - cognome
     - carta_id
     - telefono
   
 - Ho implementato i metodi **getter** per ogni campo, che restituiscono il valore del campo corrispondente.
 - Ho implementato i metodi **setter** per ogni campo, che impostano il valore del campo corrispondente.
-> Ora puoi utilizzare questi metodi getter e setter per accedere e modificare i campi dell'oggetto Clienti nella tua applicazione
+> Ora si possono utilizzare questi metodi getter e setter per accedere e modificare i campi dell'oggetto Clienti nell'applicazione
