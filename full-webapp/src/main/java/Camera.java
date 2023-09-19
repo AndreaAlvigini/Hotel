@@ -6,31 +6,26 @@ public class Camera{
     //aggiunto tipologia
     private String tipologia;
     private String descrizione;
+    private boolean bagno;
+    private boolean condizionatore;
     private Double prezzo;
     //aggiunta immagine
     private String immagine;
-    //aggiunto dipsonibilità
-    private boolean disponibilita;
-    //AGGIUNGERE CAMPI BOOLEANI bagno
-    private boolean bagno;
-    //AGGIUNGERE CAMPI BOOLEANI bagno
-    private boolean condizionatore;
+    
 
     // Costruttore vuoto
     public Camera(){
     }
     // Costruttore vuoto
-    public Camera(int id, String tipologia, String descrizione, Double prezzo, String immagine, boolean disponibilita, boolean bagno, boolean condizionatore){
+    public Camera(int id, String tipologia, String descrizione, boolean bagno, boolean condizionatore, Double prezzo, String immagine){
         this.id = id;
         //aggiungiamo tipologia
         this.tipologia = tipologia;
         this.descrizione = descrizione;
+        this.bagno = bagno;
+        this.condizionatore = condizionatore;
         this.prezzo = prezzo;
         this.immagine = immagine;
-        //aggiungiamo disponibilità
-        this.disponibilita = disponibilita;
-        this.bagno =bagno;
-        this.condizionatore =condizionatore;
     }
     // Getter e Setter
     public int getId() {
@@ -44,30 +39,15 @@ public class Camera{
     public String getTipologia(){
         return tipologia;
     }
-
     public void setTipologia(String tipologia){
         this.tipologia = tipologia;
     }
+
     public String getDescrizione(){
         return descrizione;
     }
-
     public void setDescrizione (String descrizione){
         this.descrizione = descrizione;
-    }
-
-    public Double getPrezzo (){
-        return prezzo;
-    }
-    public void setPrezzo(Double prezzo){
-        this.prezzo = prezzo;
-    }
-
-    public String getImmagine(){
-        return immagine;
-    }
-    public void setImmagine(String immagine){
-        this.immagine = immagine;
     }
     
     //aggiunto bagno
@@ -86,11 +66,17 @@ public class Camera{
         this.condizionatore = condizionatore;
     }
 
-    //aggiunto disponibilità
-    public boolean getDisponibilita (){
-        return disponibilita;
+    public Double getPrezzo (){
+        return prezzo;
     }
-    public void setDisponibilita(boolean disponibilita){
-        this.disponibilita = disponibilita;
+    public void setPrezzo(Double prezzo){
+        this.prezzo = prezzo;
+    }
+
+    public String getImmagine(){
+        return immagine;
+    }
+    public void setImmagine(String immagine){
+        this.immagine = immagine;
     }
 }

@@ -26,9 +26,10 @@ public class CameraDAO {
                 c.setId(rs.getInt("id"));
                 c.setTipologia(rs.getString("tipologia"));
                 c.setDescrizione(rs.getString("descrizione"));
+                c.setBagno(rs.getBoolean("bagno"));
+                c.setCondizionatore(rs.getBoolean("condizionatore"));
                 c.setPrezzo(rs.getDouble("prezzo"));
                 c.setImmagine(rs.getString("immagine"));
-                c.setDisponibilita(rs.getBoolean("disponibilita"));
                 camere.add(c);
             }
 
@@ -44,7 +45,7 @@ public class CameraDAO {
                                           // oggetto Camera
         Camera c = null; // creazione oggetto Camera vuoto
 
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM camere WHERE id = ?")) { // selezione dalla
+        try (PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM camere WHERE id = ?")) { // selezione dalla
                                                                                                     // tabella prodotti
                                                                                                     // in base all'id
 
@@ -56,9 +57,10 @@ public class CameraDAO {
                     c.setId(rs.getInt("id"));
                     c.setTipologia(rs.getString("tipologia"));
                     c.setDescrizione(rs.getString("descrizione"));
+                    c.setBagno(rs.getBoolean("bagno"));
+                    c.setCondizionatore(rs.getBoolean("condizionatore"));
                     c.setPrezzo(rs.getDouble("prezzo"));
                     c.setImmagine(rs.getString("immagine"));
-                    c.setDisponibilita(rs.getBoolean("disponibilita"));
                 }
             }
 
@@ -76,9 +78,10 @@ public class CameraDAO {
 
             stmt.setString(1, c.getTipologia()); // riporto i valori nella riga della tabella prodotti
             stmt.setString(2, c.getDescrizione());
-            stmt.setDouble(3, c.getPrezzo());
-            stmt.setString(4, c.getImmagine());
-            stmt.setBoolean(5, c.getDisponibilita());
+            stmt.setBoolean(3, c.getBagno());
+            stmt.setBoolean(4, c.getCondizionatore());
+            stmt.setDouble(5, c.getPrezzo());
+            stmt.setString(6, c.getImmagine());
             stmt.executeUpdate();
         } catch (SQLException e) {
             // gestisci l'eccezione
@@ -110,9 +113,10 @@ public class CameraDAO {
                 c.setId(rs.getInt("id"));
                 c.setTipologia(rs.getString("tipologia"));
                 c.setDescrizione(rs.getString("descrizione"));
+                c.setBagno(rs.getBoolean("bagno"));
+                    c.setCondizionatore(rs.getBoolean("condizionatore"));
                 c.setPrezzo(rs.getDouble("prezzo"));
                 c.setImmagine(rs.getString("immagine"));
-                c.setDisponibilita(rs.getBoolean("disponibilita"));
                 camere.add(c);
             }
 
