@@ -40,11 +40,11 @@
                             <p class="mb-md-0">€ ${prenotazione.totale}</p>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#dettagli-cliente-${prenotazione.clienteDocumento}" aria-expanded="false" aria-controls="dettagli-cliente-${prenotazione.clienteDocumento}">Dettagli</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#dettagli-cliente-${prenotazione.id}" aria-expanded="false" aria-controls="dettagli-cliente-${prenotazione.id}">Dettagli</button>
                         </div>
                     </div>
 
-                    <div class="border-top border-light-subtle mt-3 collapse" id="dettagli-cliente-${prenotazione.clienteDocumento}">
+                    <div class="border-top border-light-subtle mt-3 collapse" id="dettagli-cliente-${prenotazione.id}">
                         <div class="mt-3">
                             <h6>Cliente</h6>
                             <p>${prenotazione.clienteNome} ${prenotazione.clienteCognome}</p>
