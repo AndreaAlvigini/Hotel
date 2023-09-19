@@ -25,7 +25,7 @@
                 <p>Descrizione: ${camera.descrizione}</p>
                 <p>Bagno: ${camera.bagno}</p>
                 <p>Condizionatore: ${camera.condizionatore}</p>
-                <p>Prezzo: ${camera.prezzo} € per notte</p>
+                <p>Prezzo: ${camera.prezzo} ï¿½ per notte</p>
                 <img src="./assets/foto_camere/${camera.immagine}" alt="foto della camera" class="card-img-top">
             
         </div>
