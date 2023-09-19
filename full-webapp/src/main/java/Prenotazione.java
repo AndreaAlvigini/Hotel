@@ -11,6 +11,15 @@ public class Prenotazione {
     private int notti;
     private double totale;
 
+    private String clienteNome;
+    private String clienteCognome;
+    private String clienteDocumento;
+    private String clienteEmail;
+    private String clienteTelefono;
+
+    private int cameraNumero;
+    private String cameraTipologia;
+
     public Prenotazione(){
     }
 
@@ -78,6 +87,64 @@ public class Prenotazione {
 
     public void setTotale(Double totale){
         this.totale = totale;
+    }
+
+    // Getter e Setter per recuperare i dati del clienti collegati alla tabella prenotazione tramite foreign key
+    public String getClienteNome() {
+        return clienteNome;
+    }
+
+    public void setClienteNome(String clienteNome) {
+        this.clienteNome = clienteNome;
+    }
+
+    public String getClienteCognome() {
+        return clienteCognome;
+    }
+
+    public void setClienteCognome(String clienteCognome) {
+        this.clienteCognome = clienteCognome;
+    }
+
+    public String getClienteDocumento() {
+        return clienteDocumento;
+    }
+
+    public void setClienteDocumento(String clienteDocumento) {
+        this.clienteDocumento = clienteDocumento;
+    }
+
+    public String getClienteEmail() {
+        return clienteEmail;
+    }
+
+    public void setClienteEmail(String clienteEmail) {
+        this.clienteEmail = clienteEmail;
+    }
+
+    public String getClienteTelefono() {
+        return clienteTelefono;
+    }
+
+    public void setClienteTelefono(String clienteTelefono) {
+        this.clienteTelefono = clienteTelefono;
+    }
+
+    // Getter e Setter per recuperare i dati delle camere collegati alla tabella prenotazione tramite foreign key
+    public int getCameraNumero() {
+        return cameraNumero;
+    }
+
+    public void setCameraNumero(int cameraNumero) {
+        this.cameraNumero = cameraNumero;
+    }
+
+    public String getCameraTipologia() {
+        return cameraTipologia;
+    }
+
+    public void setCameraTipologia(String cameraTipologia) {
+        this.cameraTipologia = cameraTipologia;
     }
 
 }

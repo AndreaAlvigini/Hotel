@@ -60,11 +60,19 @@ public class PrenotazioneDAO {
         p.inserisciPrenotazione(cliente, camera, notti, checkInDate, checkOutDate, prezzo);
     }
 
+    //SELECT prodotti.id, prodotti.nome, prodotti.quantita, prodotti.prezzo, categorie.nome AS nomeCategoria FROM prodotti JOIN categorie ON prodotti.id_categoria=categorie.id;
     public List<Prenotazione> getAllPrenotazioni() {
         List<Prenotazione> prenotazioni = new ArrayList<>();
 
+        String sql = "SELECT prenotazioni.*, " +
+        "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, " +
+        "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
+        "FROM prenotazioni " +
+        "JOIN clienti ON prenotazioni.id_cliente = clienti.id " +
+        "JOIN camere ON prenotazioni.id_camera = camere.id";
+
         try (Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM prenotazioni")) {
+                ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
                 Prenotazione p = new Prenotazione();
@@ -75,6 +83,16 @@ public class PrenotazioneDAO {
                 p.setCheckIn(rs.getString("check_in"));
                 p.setCheckOut(rs.getString("check_out"));
                 p.setTotale(rs.getDouble("totale"));
+
+                p.setClienteNome(rs.getString("clienteNome"));
+                p.setClienteCognome(rs.getString("clienteCognome"));
+                p.setClienteDocumento(rs.getString("clienteDocumento"));
+                p.setClienteEmail(rs.getString("clienteEmail"));
+                p.setClienteTelefono(rs.getString("clienteTelefono"));
+
+                p.setCameraNumero(rs.getInt("cameraNumero"));
+                p.setCameraTipologia(rs.getString("cameraTipologia"));
+
                 prenotazioni.add(p);
             }
 

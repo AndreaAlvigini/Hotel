@@ -28,12 +28,12 @@
                             <p class="mb-sm-0">#${prenotazione.id}</p>
                         </div>
                         <div>
-                            <h6>Check in</h6>
-                            <p class="mb-sm-0">${prenotazione.checkIn}</p>
+                            <h6>Date</h6>
+                            <p class="mb-sm-0">${prenotazione.checkIn}/${prenotazione.checkOut}</p>
                         </div>
                         <div>
-                            <h6>Check out</h6>
-                            <p class="mb-sm-0">${prenotazione.checkOut}</p>
+                            <h6>Camera</h6>
+                            <p class="mb-sm-0">${prenotazione.cameraNumero} - ${prenotazione.cameraTipologia}</p>
                         </div>
                         <div class="text-sm-end">
                             <h6>Totale</h6>
@@ -44,7 +44,16 @@
                     <div class="border-top border-light-subtle">
                         <div class="mt-3">
                             <h6>Cliente</h6>
-                            <p>${prenotazione.idCliente}</p>
+                            <p>${prenotazione.clienteNome} ${prenotazione.clienteCognome}</p>
+                        </div>
+                        <div class="mt-3">
+                            <h6>Documento</h6>
+                            <p>${prenotazione.clienteDocumento}</p>
+                        </div>
+                        <div class="mt-3">
+                            <h6>Contatti</h6>
+                            <p class="mb-0"><a href="tel:${prenotazione.clienteTelefono}">${prenotazione.clienteTelefono}</a></p>
+                            <p class="mb-sm-0"><a href="mailto:${prenotazione.clienteEmail}">${prenotazione.clienteEmail}</a></p>
                         </div>
                     </div>
                 </div>
