@@ -38,9 +38,9 @@
         ('Giovanna', 'Verdi', 'UH27846G', 'giovanna@email.com', '555-9876');
 
         INSERT INTO camere (tipologia, descrizione, prezzo, immagine, bagno, condizionatore, disponibilita) VALUES
-        ('Doppia', 'Descrizione doppia', 80.99, 'immagine1.jpg', TRUE, FALSE, TRUE ),
-        ('Suite', 'Descrizione suite', 190.99, 'immagine2.jpg', TRUE, TRUE, FALSE ),
-        ('Singola', 'Descrizione singola', 70.49, 'immagine3.jpg', FALSE, FALSE, FALSE );
+        ('Doppia', 'Descrizione doppia', 80.99, 'MainArticle.jpg', TRUE, FALSE, TRUE ),
+        ('Suite', 'Descrizione suite', 190.99, 'MainArticle.jpg', TRUE, TRUE, FALSE ),
+        ('Singola', 'Descrizione singola', 70.49, 'MainArticle.jpg', FALSE, FALSE, FALSE );
 
         INSERT INTO prenotazioni (id_cliente, id_camera, check_in, check_out, notti, totale)VALUES
         (1, 2, '2023-09-08', '2023-09-12', 4, 763.96),

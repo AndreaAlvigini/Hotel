@@ -22,3 +22,9 @@
         grid-template-columns: repeat(1, 1fr);
     }
 }
+/* @media (max-width: 264px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+        display: block;
+    }
+} */

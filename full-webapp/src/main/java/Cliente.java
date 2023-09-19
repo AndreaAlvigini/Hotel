@@ -3,7 +3,9 @@ public class Cliente {
     // Specifico i campi che appartengono alla classe Cliente
     private int id;
     private String nome;
+    // aggiunto cognome
     private String cognome;
+
     private String email;
 
     // aggiungo telefono
@@ -19,9 +21,10 @@ public class Cliente {
     public Cliente(int id, String nome, String cognome, String email, String telefono, String carta_id) {
         this.id = id;
         this.nome = nome;
+        //aggiunto cognome
         this.cognome = cognome;
         this.email = email;
-        // aggiunto carta_id costruttore
+        // aggiunto carta_id
         this.carta_id = carta_id;
         // aggiunto telefono
         this.telefono = telefono;
@@ -45,7 +48,7 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-//aggiunto cognome getter setter
+    //aggiunto getter setter cognome
     public String getCognome() {
         return cognome;
     }
@@ -62,7 +65,7 @@ public class Cliente {
         this.email = email;
     }
 
-    // aggiunto telefono get set
+    // aggiunto telefono GETTER e SETTER
     public String getTelefono() {
         return telefono;
     }

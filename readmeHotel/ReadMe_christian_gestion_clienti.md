@@ -379,7 +379,7 @@ clienti.jsp
                 <td>${cliente.cognome}</td>
                 <td>${cliente.email}</td>
                 <td>
-                    <a href="clienti?azione=modifica&id=${cliente.id}">Modifica</a> | 
+                    <a href="clienti?azione=modifica&id=${cliente.id}">Modifica</a> |
                     <a href="clienti?azione=elimina&id=${cliente.id}">Elimina</a>
                 </td>
             </tr>
