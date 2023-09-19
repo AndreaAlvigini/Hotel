@@ -22,26 +22,29 @@
         <div>
             <c:forEach var="prenotazione" items="${prenotazioni}">
                 <div class="border border-light-subtle rounded p-3 mb-2">
-                    <div class="d-sm-flex justify-content-between">
-                        <div class="mb-3">
+                    <div class="d-md-flex justify-content-between align-items-center">
+                        <div>
                             <h6>N. prenotazione</h6>
-                            <p class="mb-sm-0">#${prenotazione.id}</p>
+                            <p class="mb-md-0">#${prenotazione.id}</p>
                         </div>
                         <div>
                             <h6>Date</h6>
-                            <p class="mb-sm-0">${prenotazione.checkIn}/${prenotazione.checkOut}</p>
+                            <p class="mb-md-0">${prenotazione.checkIn}/${prenotazione.checkOut}</p>
                         </div>
                         <div>
                             <h6>Camera</h6>
-                            <p class="mb-sm-0">${prenotazione.cameraNumero} - ${prenotazione.cameraTipologia}</p>
+                            <p class="mb-md-0">${prenotazione.cameraNumero} - ${prenotazione.cameraTipologia}</p>
                         </div>
-                        <div class="text-sm-end">
+                        <div>
                             <h6>Totale</h6>
-                            <p class="mb-sm-0">€ ${prenotazione.totale}</p>
+                            <p class="mb-md-0">€ ${prenotazione.totale}</p>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#dettagli-cliente-${prenotazione.clienteDocumento}" aria-expanded="false" aria-controls="dettagli-cliente-${prenotazione.clienteDocumento}">Dettagli</button>
                         </div>
                     </div>
 
-                    <div class="border-top border-light-subtle">
+                    <div class="border-top border-light-subtle mt-3 collapse" id="dettagli-cliente-${prenotazione.clienteDocumento}">
                         <div class="mt-3">
                             <h6>Cliente</h6>
                             <p>${prenotazione.clienteNome} ${prenotazione.clienteCognome}</p>

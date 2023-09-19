@@ -60,7 +60,6 @@ public class PrenotazioneDAO {
         p.inserisciPrenotazione(cliente, camera, notti, checkInDate, checkOutDate, prezzo);
     }
 
-    //SELECT prodotti.id, prodotti.nome, prodotti.quantita, prodotti.prezzo, categorie.nome AS nomeCategoria FROM prodotti JOIN categorie ON prodotti.id_categoria=categorie.id;
     public List<Prenotazione> getAllPrenotazioni() {
         List<Prenotazione> prenotazioni = new ArrayList<>();
 
@@ -97,11 +96,10 @@ public class PrenotazioneDAO {
             }
 
         } catch (SQLException e) {
-            // gestisci l'eccezione
             e.printStackTrace();
         }
 
-        return prenotazioni; // riporta la lista di Camere
+        return prenotazioni;
     }
 
     public List<Camera> getCamereDisponibili(Date checkIn, Date checkOut) {
