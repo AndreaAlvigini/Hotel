@@ -11,6 +11,7 @@ Le tecnologie con cui è stata creata sono:
 - Bootstrap
 
 
+
 ## Backend
 
 Per lavorare in maniera efficace e ordinata abbiamo compartimentanto il programma in tre tipi di classi Java:
@@ -375,8 +376,6 @@ In questo modo, avrai un'intestazione e un menu principale condivisi tra tutte l
 
 
 
-
-
 ## MODIFICHE E AGGIORNAMENTI DEL DATABASE
 ## PRODOTTO, CLIENTE E ACQUISTO
 Come prima cosa abbiamo aggiornato le classi Camera, Cliente e Prenotazione con le variabili di istanza che ci sembrava necessario aggiungere o modificare.
@@ -409,7 +408,7 @@ Come prima cosa abbiamo aggiornato le classi Camera, Cliente e Prenotazione con 
     private double totale;
 
 ```
-> Una volta dichiarate le nuove variabili le abbiamo aggiunte all'interno dei costruttori e abbiamo creato anche i loro getter e setter. Ad esempio per "Prenotazione" le modifiche sono state: 
+> Una volta dichiarate le nuove variabili le abbiamo aggiunte all'interno dei costruttori e abbiamo creato anche i loro getter e setter. Ad esempio per "Prenotazione" le modifiche sono state:
 ```java
     // Costruttore con parametri
      public Prenotazione(int id, int idCliente, int idProdotto, Date checkIn, Date checkOut, Double totale){

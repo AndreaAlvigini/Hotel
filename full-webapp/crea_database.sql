@@ -32,10 +32,10 @@
         FOREIGN KEY (id_cliente) REFERENCES clienti(id)
         );
 
-        INSERT INTO clienti (nome, carta_id, email, telefono)VALUES
-        ('Mario Rossi', 'AX9283F', 'mario@email.com', '555-1234'),
-        ('Luigi Bianchi', 'GE63820F', 'luigi@email.com', '555-5678'),
-        ('Giovanna Verdi', 'UH27846G', 'giovanna@email.com', '555-9876');
+        INSERT INTO clienti (nome, cognome, carta_id, email, telefono)VALUES
+        ('Mario', 'Rossi', 'AX9283F', 'mario@email.com', '555-1234'),
+        ('Luigi', 'Bianchi', 'GE63820F', 'luigi@email.com', '555-5678'),
+        ('Giovanna', 'Verdi', 'UH27846G', 'giovanna@email.com', '555-9876');
 
         INSERT INTO camere (tipologia, descrizione, prezzo, immagine, bagno, condizionatore, disponibilita) VALUES
         ('Doppia', 'Descrizione doppia', 80.99, 'immagine1.jpg', TRUE, FALSE, TRUE ),
