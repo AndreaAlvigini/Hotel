@@ -19,6 +19,23 @@
         <div>
             <h3 class="mb-4">Tutte le prenotazioni</h3>
         </div>
+
+        <div class="mb-3">
+            <form action="">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <label for="check-in">Check in</label>
+                        <input type="date" id="check-in" name="check-in"/>
+                    </div>
+                    <div class="me-3">
+                        <label for="check-out">Check out</label>
+                        <input type="date" id="check-out" name="check-out"/>
+                    </div>
+                    <button type="submit">Filtra</button>
+                </div>
+            </form>
+        </div>
+
         <div>
             <c:forEach var="prenotazione" items="${prenotazioni}">
                 <div class="border border-light-subtle rounded p-3 mb-2">
