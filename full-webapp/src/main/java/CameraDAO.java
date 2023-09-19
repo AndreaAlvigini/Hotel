@@ -45,7 +45,7 @@ public class CameraDAO {
                                           // oggetto Camera
         Camera c = null; // creazione oggetto Camera vuoto
 
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM camere WHERE id = ?")) { // selezione dalla
+        try (PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM camere WHERE id = ?")) { // selezione dalla
                                                                                                     // tabella prodotti
                                                                                                     // in base all'id
 
