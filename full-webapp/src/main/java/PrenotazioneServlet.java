@@ -27,9 +27,19 @@ public class PrenotazioneServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Prenotazione> prenotazioni = PrenotazioneDAO.getAllPrenotazioni();
+        List<Prenotazione> prenotazioni;
+
+        // Controlla se i filtri sono applicati o meno
+        String tipologiaCamera = request.getParameter("tipologia-camera");
+        if (tipologiaCamera != null && !tipologiaCamera.isEmpty()) {
+            prenotazioni = PrenotazioneDAO.getPrenotazioniByFilter(tipologiaCamera);
+        } else {
+            prenotazioni = PrenotazioneDAO.getAllPrenotazioni();
+        }
+
         request.setAttribute("prenotazioni", prenotazioni);
 
+        // Invio delle richieste e redirect
         RequestDispatcher dispatcher = request.getRequestDispatcher("prenotazioni.jsp");
         dispatcher.forward(request, response);
     }

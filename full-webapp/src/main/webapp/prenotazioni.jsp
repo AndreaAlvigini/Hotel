@@ -21,7 +21,7 @@
         </div>
 
         <div class="mb-3">
-            <form action="">
+            <form action="/prenotazioni" method="GET">
                 <div class="d-flex">
                     <div class="me-3">
                         <label for="check-in">Check in</label>
@@ -30,6 +30,13 @@
                     <div class="me-3">
                         <label for="check-out">Check out</label>
                         <input type="date" id="check-out" name="check-out"/>
+                    </div>
+                    <div>
+                        <label for="tipologia-camera">Tipologia camera</label>
+                        <select name="tipologia-camera" id="tipologia-camera">
+                            <option value="Suite">Suite</option>
+                            <option value="Doppia">Doppia</option>
+                        </select>
                     </div>
                     <button type="submit">Filtra</button>
                 </div>
