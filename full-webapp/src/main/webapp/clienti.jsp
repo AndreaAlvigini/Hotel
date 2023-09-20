@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <!-- Link al file CSS di FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <main class="container">
@@ -27,6 +28,11 @@
                         Tutti i clienti
                     </h1>
                 </div>
+                <div class="col-12">
+                    <div class="text-end">
+                        <a href="aggiungiCliente.jsp" class="btn btn-primary">Aggiungi Cliente <i class="fa-solid fa-user-plus"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -38,8 +44,7 @@
                         <a href="clienti/${cliente.id}" class="text-decoration-none"> <!-- Rimuove la sottolineatura dai link -->
                             <h4 class="card-title fs-3">${cliente.nome} ${cliente.cognome}</h4>
                         </a>
-                        <p class="card-text fs-6">${cliente.email}</p>
-                        <p class="card-text fs-6">${cliente.telefono}</p>
+                        <p class="card-text fs-6">Id carta: ${cliente.carta_id}</p>
                     </div>
                 </div>
             </c:forEach>

@@ -60,4 +60,14 @@
     <url-pattern>/prenotazioni/nuova</url-pattern>
     <url-pattern>/PrenotazioneNuovaServlet</url-pattern>
   </servlet-mapping>
+  <!-- aggiunta aggiungiiclienteservlet -->
+  <servlet>
+    <servlet-name>AggiungiClienteServlet</servlet-name>
+    <servlet-class>AggiungiClienteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AggiungiClienteServlet</servlet-name>
+    <url-pattern>/aggiungiCliente</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/clienti/*")
+@WebServlet("/cliente/*")
 public class DettaglioClienteServlet extends HttpServlet {
     private ClienteDAO clienteDAO;
 
@@ -54,7 +54,7 @@ public class DettaglioClienteServlet extends HttpServlet {
 
             // Prepara un dispatcher per inoltrare la richiesta alla pagina JSP
             // "cliente.jsp"
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente");
             // Inoltra la richiesta alla pagina JSP per la visualizzazione dei dati
             dispatcher.forward(request, response);
         }

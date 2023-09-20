@@ -13,7 +13,8 @@ public class ClienteDAO {
     public ClienteDAO(Connection conn) {// costruttore di classe
         this.conn = conn;
     }
-    //metodo che restituisce una lisa di tutti i clienti presenti nel database
+
+    // metodo che restituisce una lisa di tutti i clienti presenti nel database
     public List<Cliente> getAllClienti() { // metodo che resituisce una lista di oggetti Cliente
         List<Cliente> clienti = new ArrayList<>(); // creazione della lista
 
@@ -38,7 +39,9 @@ public class ClienteDAO {
 
         return clienti;
     }
-    //Metodo per controllare se all'interno del database esiste un cliente inserendo come dato di controllo l'id della carta
+
+    // Metodo per controllare se all'interno del database esiste un cliente
+    // inserendo come dato di controllo l'id della carta
     public boolean controllaSePresente(String carta_id) {
         boolean doesExists = false;
 
@@ -59,7 +62,7 @@ public class ClienteDAO {
         return doesExists;
     }
 
-    //Metodo per selezionare un cliente da un determito id
+    // Metodo per selezionare un cliente da un determito id
     public Cliente getClienteById(int id) {
         Cliente c = null;
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM clienti WHERE id = ?")) {
