@@ -14,8 +14,19 @@
   <servlet-mapping>
     <servlet-name>ClienteServlet</servlet-name>
     <url-pattern>/clienti</url-pattern>
+
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>DettaglioClienteServlet</servlet-name>
+    <servlet-class>DettaglioClienteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DettaglioClienteServlet</servlet-name>
+    <url-pattern>/clienti/*</url-pattern>
+    
+  </servlet-mapping>
   <!-- Pagina camere -->
   <servlet>
     <servlet-name>CameraServlet</servlet-name>

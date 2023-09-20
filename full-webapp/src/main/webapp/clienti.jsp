@@ -35,7 +35,7 @@
             <c:forEach var="cliente" items="${clienti}">
                 <div class="card grid-item">
                     <div class="card-body">
-                        <a href="cliente.jsp?id=${cliente.id}" class="text-decoration-none"> <!-- Rimuove la sottolineatura dai link -->
+                        <a href="clienti/${cliente.id}" class="text-decoration-none"> <!-- Rimuove la sottolineatura dai link -->
                             <h4 class="card-title fs-3">${cliente.nome} ${cliente.cognome}</h4>
                         </a>
                         <p class="card-text fs-6">${cliente.email}</p>
