@@ -4,7 +4,6 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-
   <!-- Pagina clienti -->
   <servlet>
     <servlet-name>ClienteServlet</servlet-name>
@@ -38,8 +37,19 @@
     <url-pattern>/prenotazioni</url-pattern>
   </servlet-mapping>
 
-  <!-- Pagina prenotazioni/nuova -->
+  <!-- Pagina prenotazione singola -->
   <servlet>
+    <servlet-name>PrenotazioneSingolaServlet</servlet-name>
+    <servlet-class>PrenotazioneSingolaServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PrenotazioneSingolaServlet</servlet-name>
+    <url-pattern>/prenotazioni/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- Pagina prenotazioni/nuova -->
+  <!-- <servlet>
     <servlet-name>PrenotazioneNuovaServlet</servlet-name>
     <servlet-class>PrenotazioneNuovaServlet</servlet-class>
   </servlet>
@@ -48,5 +58,5 @@
     <servlet-name>PrenotazioneNuovaServlet</servlet-name>
     <url-pattern>/prenotazioni/nuova</url-pattern>
     <url-pattern>/PrenotazioneNuovaServlet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 </web-app>

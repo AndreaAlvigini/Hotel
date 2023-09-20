@@ -24,14 +24,6 @@
             <form action="/prenotazioni" method="GET">
                 <div class="d-flex">
                     <div>
-                        <label for="numero-camera">Numero camera</label>
-                        <select name="numero-camera" id="numero-camera">
-                            <c:forEach var="camera" items="${camere}">
-                            <option value="${camera.id}">${camera.id}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div>
                         <label for="tipologia-camera">Tipologia camera</label>
                         <select name="tipologia-camera" id="tipologia-camera">
                             <option value="Suite">Suite</option>
