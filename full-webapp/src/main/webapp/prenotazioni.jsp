@@ -56,23 +56,7 @@
                             <p class="mb-md-0">€ ${prenotazione.totale}</p>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#dettagli-cliente-${prenotazione.id}" aria-expanded="false" aria-controls="dettagli-cliente-${prenotazione.id}">Dettagli</button>
-                        </div>
-                    </div>
-
-                    <div class="border-top border-light-subtle mt-3 collapse" id="dettagli-cliente-${prenotazione.id}">
-                        <div class="mt-3">
-                            <h6>Cliente</h6>
-                            <p>${prenotazione.clienteNome} ${prenotazione.clienteCognome}</p>
-                        </div>
-                        <div class="mt-3">
-                            <h6>Documento</h6>
-                            <p>${prenotazione.clienteDocumento}</p>
-                        </div>
-                        <div class="mt-3">
-                            <h6>Contatti</h6>
-                            <p class="mb-0"><a href="tel:${prenotazione.clienteTelefono}">${prenotazione.clienteTelefono}</a></p>
-                            <p class="mb-sm-0"><a href="mailto:${prenotazione.clienteEmail}">${prenotazione.clienteEmail}</a></p>
+                            <a href="/prenotazioni/${prenotazione.id}">Dettagli</a>
                         </div>
                     </div>
                 </div>
