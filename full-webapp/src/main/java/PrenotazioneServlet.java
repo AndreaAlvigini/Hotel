@@ -32,9 +32,9 @@ public class PrenotazioneServlet extends HttpServlet {
         // Controlla se i filtri sono applicati o meno
         String tipologiaCamera = request.getParameter("tipologia-camera");
         if (tipologiaCamera != null && !tipologiaCamera.isEmpty()) {
-            prenotazioni = PrenotazioneDAO.getPrenotazioniByFilter(tipologiaCamera);
+            prenotazioni = PrenotazioneDAO.getPrenotazioniByFilter(PrenotazioneDAO.sql, tipologiaCamera);
         } else {
-            prenotazioni = PrenotazioneDAO.getAllPrenotazioni();
+            prenotazioni = PrenotazioneDAO.getAllPrenotazioni(PrenotazioneDAO.sql);
         }
 
         request.setAttribute("prenotazioni", prenotazioni);
