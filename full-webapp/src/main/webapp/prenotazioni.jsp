@@ -23,13 +23,13 @@
         <div class="mb-3">
             <form action="/prenotazioni" method="GET">
                 <div class="d-flex">
-                    <div class="me-3">
-                        <label for="check-in">Check in</label>
-                        <input type="date" id="check-in" name="check-in"/>
-                    </div>
-                    <div class="me-3">
-                        <label for="check-out">Check out</label>
-                        <input type="date" id="check-out" name="check-out"/>
+                    <div>
+                        <label for="numero-camera">Numero camera</label>
+                        <select name="numero-camera" id="numero-camera">
+                            <c:forEach var="camera" items="${camere}">
+                            <option value="${camera.id}">${camera.id}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div>
                         <label for="tipologia-camera">Tipologia camera</label>

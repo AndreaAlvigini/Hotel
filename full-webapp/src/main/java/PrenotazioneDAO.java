@@ -146,17 +146,34 @@ public class PrenotazioneDAO {
     }
 
     // Prenotazioni filtrate
-    public List<Prenotazione> getPrenotazioniByFilter(String sql, String tipologiaCamera) {
+    public List<Prenotazione> getPrenotazioniByFilter(String sql, String tipologiaCamera, int numeroCamera) {
         List<Prenotazione> prenotazioni = new ArrayList<>();
 
-        if (tipologiaCamera != null && !tipologiaCamera.isEmpty()) {
-            sql += " WHERE camere.tipologia = ?";
+        boolean filterByTipologia = tipologiaCamera != null && !tipologiaCamera.isEmpty();
+        boolean filterByNumeroCamera = numeroCamera > 0;
+
+        if (filterByTipologia || filterByNumeroCamera) {
+            sql += " WHERE";
+            if (filterByTipologia) {
+                sql += " camere.tipologia = ?";
+                if (filterByNumeroCamera) {
+                    sql += " AND";
+                }
+            }
+            if (filterByNumeroCamera) {
+                sql += " camere.id = ?";
+            }
         }
 
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
-            if (tipologiaCamera != null && !tipologiaCamera.isEmpty()) {
-                stmt.setString(1, tipologiaCamera);
+            int paramIndex = 1;
+
+            if (filterByTipologia) {
+                stmt.setString(paramIndex++, tipologiaCamera);
+            }
+            if (filterByNumeroCamera) {
+                stmt.setInt(paramIndex, numeroCamera);
             }
 
             ResultSet rs = stmt.executeQuery();

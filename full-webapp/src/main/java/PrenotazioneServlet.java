@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class PrenotazioneServlet extends HttpServlet {
+    private CameraDAO CameraDAO;
     private PrenotazioneDAO PrenotazioneDAO;
 
     public void init() {
@@ -22,17 +23,31 @@ public class PrenotazioneServlet extends HttpServlet {
             e.printStackTrace();
             throw new RuntimeException("Errore durante la connessione al database.", e);
         }
+
+        CameraDAO = new CameraDAO(conn);
         PrenotazioneDAO = new PrenotazioneDAO(conn);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<Camera> camere = CameraDAO.getAllCamere();
+        request.setAttribute("camere", camere);
+
         List<Prenotazione> prenotazioni;
 
         // Controlla se i filtri sono applicati o meno
         String tipologiaCamera = request.getParameter("tipologia-camera");
+        String numeroCameraString = request.getParameter("numero-camera");
+
+        int numeroCamera = 0; // Valore predefinito in caso il parametro sia nullo o vuoto
+
+        if (numeroCameraString != null && !numeroCameraString.isEmpty()) {
+            numeroCamera = Integer.parseInt(numeroCameraString);
+        }
+
         if (tipologiaCamera != null && !tipologiaCamera.isEmpty()) {
-            prenotazioni = PrenotazioneDAO.getPrenotazioniByFilter(PrenotazioneDAO.sql, tipologiaCamera);
+            prenotazioni = PrenotazioneDAO.getPrenotazioniByFilter(PrenotazioneDAO.sql, tipologiaCamera, numeroCamera);
         } else {
             prenotazioni = PrenotazioneDAO.getAllPrenotazioni(PrenotazioneDAO.sql);
         }
