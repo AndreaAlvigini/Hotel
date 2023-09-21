@@ -38,13 +38,13 @@ public class PrenotazioneSingolaServlet extends HttpServlet {
                 Prenotazione prenotazione = PrenotazioneDAO.getPrenotazioneById(idPrenotazione);
 
                 if (prenotazione == null) {
-                    response.sendRedirect("/");
+                    response.sendRedirect("/prenotazioni");
                 }
                 
                 request.setAttribute("prenotazione", prenotazione);
 
             } catch (NumberFormatException e) {
-                response.sendRedirect("/");
+                response.sendRedirect("/prenotazioni");
                 return;
             }            
         }     
