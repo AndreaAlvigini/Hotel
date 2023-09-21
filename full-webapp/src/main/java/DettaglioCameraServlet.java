@@ -30,29 +30,41 @@ public class DettaglioCameraServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String requestURI = request.getRequestURI();
-        String[] parts = requestURI.split("/");
+    String requestURI = request.getRequestURI();
+    String[] parts = requestURI.split("/");
 
-        if (parts.length > 0) {
-            String parametro = parts[parts.length - 1];
+    if (parts.length > 0) {
+        String parametro = parts[parts.length - 1];
 
-            try {
-                int idCamera = Integer.parseInt(parametro);
-                Camera camera = cameraDAO.getCameraById(idCamera);
+        try {
+            int idCamera = Integer.parseInt(parametro);
+            Camera camera = cameraDAO.getCameraById(idCamera);
 
-                if (camera == null) {
-                    response.sendRedirect("/");
-                }
-
-                request.setAttribute("camera", camera);
-
-            } catch (NumberFormatException e) {
+            if (camera == null) {
                 response.sendRedirect("/");
                 return;
             }
-        }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/camera.jsp");
-        dispatcher.forward(request, response);
+            // Recupera i valori dei parametri per i checkbox dalla richiesta
+            String bagnoParam = request.getParameter("bagno");
+            String condizionatoreParam = request.getParameter("condizionatore");
+
+            // Converte i parametri in valori booleani
+            boolean bagnoSelected = "true".equals(bagnoParam);
+            boolean condizionatoreSelected = "true".equals(condizionatoreParam);
+
+            // Passa i valori dei checkbox come attributi alla JSP
+            request.setAttribute("camera", camera);
+            request.setAttribute("bagnoSelected", bagnoSelected);
+            request.setAttribute("condizionatoreSelected", condizionatoreSelected);
+
+        } catch (NumberFormatException e) {
+            response.sendRedirect("/");
+            return;
+        }
+    }
+
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/camera.jsp");
+    dispatcher.forward(request, response);
     }
 }

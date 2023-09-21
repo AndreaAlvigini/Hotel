@@ -20,15 +20,54 @@
         <h1 style="text-align: center;">Dettagli della camera #${camera.id}</h1>
 
         <div class="grid-container">
-                <p>ID: ${camera.id}</p>
-                <p>Tipologia: ${camera.tipologia}</p>
-                <p>Descrizione: ${camera.descrizione}</p>
-                <p>Bagno: ${camera.bagno}</p>
-                <p>Condizionatore: ${camera.condizionatore}</p>
-                <p>Prezzo: ${camera.prezzo} � per notte</p>
-                <img src="./assets/foto_camere/${camera.immagine}" alt="foto della camera" class="card-img-top">
+            <p>ID: ${camera.id}</p>
+            <p>Tipologia: ${camera.tipologia}</p>
+            <p>Descrizione: ${camera.descrizione}</p>
+            <!-- <p>Bagno:
+                <input type="checkbox" name="bagno" value="true" ${bagnoSelected ? 'checked' : ''} disabled>
+            </p>
+            <p>Condizionatore:
+                <input type="checkbox" name="condizionatore" value="true" ${condizionatoreSelected ? 'checked' : ''} disabled>
+            </p> -->
+            <!-- <p>Prezzo: ${camera.prezzo} euro per notte</p> -->
+            <img src="{pageContext.request.contextPath}/assets/foto_camere/${camera.immagine}" alt="foto della camera" class="card-img-top float-start">
             
         </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Bagno</th>
+                    <th scope="col">Condizionatore</th>
+                    <th scope="col">Prezzo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <c:choose>
+                            <c:when test="${camera.bagno}">
+                                <span>&#10003;</span> <!-- Segno di spunta -->
+                            </c:when>
+                            <c:otherwise>
+                                <span>&#10007;</span> <!-- Croce -->
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${camera.condizionatore}">
+                                <span>&#10003;</span> <!-- Segno di spunta -->
+                            </c:when>
+                            <c:otherwise>
+                                <span>&#10007;</span> <!-- Croce -->
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>${camera.prezzo}/notte</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 </body>
 </html>
