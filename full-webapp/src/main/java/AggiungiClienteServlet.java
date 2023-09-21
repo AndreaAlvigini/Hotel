@@ -45,9 +45,10 @@ public class AggiungiClienteServlet extends HttpServlet {
         if (clienteEsiste) {
             // Se il cliente esiste già, gestisci l'errore o reindirizza con un messaggio di
             // errore
-            request.setAttribute("errore", "Il cliente esiste già.");
-            response.sendRedirect("/clienti");
-            System.out.println("CIAO SEI NELL'IF");
+            request.setAttribute("messaggio", "Il cliente esiste già.");
+            response.sendRedirect("/aggiungiCliente.jsp");
+            
+            
 
         } else {
             // Se il cliente non esiste ancora, aggiungilo al sistema
@@ -62,6 +63,7 @@ public class AggiungiClienteServlet extends HttpServlet {
 
             // Dopo l'aggiunta del cliente, reindirizza l'utente alla pagina principale dei clienti
             response.sendRedirect("/clienti");
+            
         }
     }
 }

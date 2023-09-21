@@ -1,14 +1,15 @@
 # GretaHotel
-
+## Introduzione
 GretaHotel è un'applicazione di database management pensata per la reception di un Hotel che permette una facile gestione dei dati trattando in particolare camere, clienti e prenotazioni.
 
 Le tecnologie con cui è stata creata sono:
 
 - Java
-- SQLite
-- Maven
-- Java Server Page
-- Bootstrap
+- SQLite: databse relazionale
+- Maven: strumento di gestionedelle dipedenze e di build del progetto
+- Java Server Page: framework per los viluppo di applicazioni web in java
+- Bootstrap: framework css e script per lo styling
+- Fontawesome: libreria icone per migliorare un interfaccia utente
 
 Vediamo alcuni dei comandi inziziali per creare l'applicazione!
 
@@ -31,6 +32,7 @@ fai partire jetty
 Per andare alla pagina del sito
 
 - localhost:8080/clienti
+
 
 # Gestione clienti
 - Creazione del Modello (Clienti.java): Questa classe rappresenterà un cliente nel tuo sistema.
@@ -277,7 +279,7 @@ public class ClienteDAO {
 ```
 Per interagire con il database abbiamo inserito alcuni metodi utili alle varie funzionalità del database:
 
-- **getClienteById** che permette la selezione di un cliente per id e viene utile per creare una scheda cliente singolo 
+- **getClienteById** che permette la selezione di un cliente per id e viene utile per creare una scheda cliente singolo
 - **insertCliente** l'inserzione di un cliente nel database
 - **getClienteByCartaId** per selezionare un cliente dall'id della carta
 - **controllaSePresente** metodo per verificare l'esistenza di un cliente nel database, restituisce un booleano "doesExists"
@@ -399,6 +401,77 @@ public class DettaglioClienteServlet extends HttpServlet {
     }
 }
 ```
+## Servlet AggiungiClienteServlet.java
+```java
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/clienti/*")
+public class AggiungiClienteServlet extends HttpServlet {
+    private ClienteDAO clienteDAO;
+
+    public void init() {
+        try {
+            // Stabilisce una connessione al database SQLite denominato "database.db"
+            String url = "jdbc:sqlite:database.db";
+            Connection conn = DriverManager.getConnection(url);
+
+            // Inizializza l'istanza di ClienteDAO con la connessione al database
+            clienteDAO = new ClienteDAO(conn);
+        } catch (SQLException e) {
+            e.printStackTrace(); // Gestisce eventuali eccezioni SQL stampando una traccia nello standard output
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        // Ottieni i parametri dal modulo JSP
+        String nome = request.getParameter("nome");
+        String cognome = request.getParameter("cognome");
+        String email = request.getParameter("email");
+        String telefono = request.getParameter("telefono");
+        String numeroCartaIdentita = request.getParameter("carta_id");
+
+        System.out.println(nome);
+        System.out.println(cognome);
+        System.out.println(numeroCartaIdentita);
+
+        // Esegui la logica per verificare se il cliente esiste già
+        boolean clienteEsiste = clienteDAO.controllaSePresente(numeroCartaIdentita);
+        System.out.println(clienteEsiste);
+
+        if (clienteEsiste) {
+            // Se il cliente esiste già, gestisci l'errore o reindirizza con un messaggio di
+            // errore
+            request.setAttribute("messaggio", "Il cliente esiste già.");
+            response.sendRedirect("/aggiungiCliente.jsp");
+            
+            
+
+        } else {
+            // Se il cliente non esiste ancora, aggiungilo al sistema
+            Cliente cliente = new Cliente();
+            cliente.setNome(nome);
+            cliente.setCognome(cognome);
+            cliente.setEmail(email);
+            cliente.setTelefono(telefono);
+            cliente.setCarta_id(numeroCartaIdentita);
+
+            clienteDAO.insertCliente(cliente);
+
+            // Dopo l'aggiunta del cliente, reindirizza l'utente alla pagina principale dei clienti
+            response.sendRedirect("/clienti");
+        }
+    }
+}
+```
 ## Routing: web.xml
 Questa servlet è stata mappata assieme alle altre nel file web.xml e riporta l'annotazione @WebServlet("/clienti/*"):
 
@@ -441,7 +514,7 @@ Questa servlet è stata mappata assieme alle altre nel file web.xml e riporta l'
     <servlet-name>CameraServlet</servlet-name>
     <url-pattern>/camere</url-pattern>
   </servlet-mapping>
-
+    <!-- AGGIUNGERE PARTI DI GRETA!!!! DETTAGLIO CAMEREA? -->
   <!-- Pagina prenotazioni -->
   <servlet>
     <servlet-name>PrenotazioneServlet</servlet-name>
