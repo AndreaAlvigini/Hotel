@@ -43,14 +43,14 @@ public class ClienteDAO {
     // Metodo per controllare se all'interno del database esiste un cliente
     // inserendo come dato di controllo l'id della carta
     public boolean controllaSePresente(String carta_id) {
-        boolean doesExists = false;
-
+        
+    boolean doesExists = false;
         try {
             String sql = "SELECT EXISTS (SELECT * FROM clienti WHERE carta_id = ?) AS doesExists";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, carta_id);
             ResultSet rs = pstmt.executeQuery();
-
+            
             if (rs.next()) {
                 doesExists = rs.getBoolean("doesExists");
             }

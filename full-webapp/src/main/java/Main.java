@@ -7,7 +7,7 @@ public class Main {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db")) {
 
             // CameraDAO cameraDAO = new CameraDAO(conn);
-            // ClienteDAO clienteDAO = new ClienteDAO(conn);
+            ClienteDAO clienteDAO = new ClienteDAO(conn);
             // PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO(conn);
 
             // // Stampa tutti i camere
@@ -40,6 +40,9 @@ public class Main {
             //     System.out.println(p);
             // }
             // clienteDAO.controllaCliente("AU7654S");
+
+            System.out.println(clienteDAO.controllaSePresente("AX9283F"));
+            
 
 
         } catch (SQLException e) {

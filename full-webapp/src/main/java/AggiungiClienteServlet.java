@@ -39,16 +39,19 @@ public class AggiungiClienteServlet extends HttpServlet {
         System.out.println(numeroCartaIdentita);
 
         // Esegui la logica per verificare se il cliente esiste già
-        boolean clienteEsiste = clienteDAO.controllaSePresente("carta_id");
+        boolean clienteEsiste = clienteDAO.controllaSePresente(numeroCartaIdentita);
+        System.out.println(clienteEsiste);
 
         if (clienteEsiste) {
             // Se il cliente esiste già, gestisci l'errore o reindirizza con un messaggio di
             // errore
             request.setAttribute("errore", "Il cliente esiste già.");
+            response.sendRedirect("/clienti");
+            System.out.println("CIAO SEI NELL'IF");
+
         } else {
             // Se il cliente non esiste ancora, aggiungilo al sistema
             Cliente cliente = new Cliente();
-            
             cliente.setNome(nome);
             cliente.setCognome(cognome);
             cliente.setEmail(email);
@@ -57,8 +60,7 @@ public class AggiungiClienteServlet extends HttpServlet {
 
             clienteDAO.insertCliente(cliente);
 
-            // Dopo l'aggiunta del cliente, reindirizza l'utente alla pagina principale dei
-            // clienti
+            // Dopo l'aggiunta del cliente, reindirizza l'utente alla pagina principale dei clienti
             response.sendRedirect("/clienti");
         }
     }

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/cliente/*")
+@WebServlet("/clienti/*")
 public class DettaglioClienteServlet extends HttpServlet {
     private ClienteDAO clienteDAO;
 
@@ -31,13 +31,13 @@ public class DettaglioClienteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Ottieni l'URI completo dalla richiesta HTTP,  L'URI rappresenta il percorso completo dell'URL richiesto dal client, compreso il contesto dell'applicazione (cioè il contesto Web dell'applicazione)
+        // Ottieni l'URI completo dalla richiesta HTTP, L'URI rappresenta il percorso completo dell'URL richiesto dal client, compreso il contesto dell'applicazione (cioè il contesto Web dell'applicazione)
         String requestURI = request.getRequestURI();
-        //divido in parti l'URI usando come punto di interruzione tra una parte l'altra "/"
+        //divido in parti l'URI usando come punto di interruzione tra una parte l'altra lo slash "/"
         String[] parts = requestURI.split("/");
 
         if (parts.length > 0) {
-            //A noi interessa estrapolare l'i del cliente dall'ultima parte dell'URI
+            //A noi interessa estrapolare l'id del cliente dall'ultima parte dell'URI
             String parametro = parts[parts.length - 1];
 
             try {
@@ -54,7 +54,7 @@ public class DettaglioClienteServlet extends HttpServlet {
 
             // Prepara un dispatcher per inoltrare la richiesta alla pagina JSP
             // "cliente.jsp"
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente.jsp");
             // Inoltra la richiesta alla pagina JSP per la visualizzazione dei dati
             dispatcher.forward(request, response);
         }

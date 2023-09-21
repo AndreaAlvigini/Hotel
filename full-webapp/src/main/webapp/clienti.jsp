@@ -5,55 +5,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel</title>
+    <title>Clienti</title>
     <!-- Link al file CSS di Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <!-- Link al file CSS personalizzato -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- Link al file CSS di FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <main class="container">
-        <!-- Inclusione del file "header.jsp" -->
+    <!-- Intestazione -->
+    <header>
         <jsp:include page="header.jsp" />
-        
-        <!-- Titolo con icona FontAwesome -->
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-left mb-4">
-                        <i class="fas fa-users mr-2"></i>
-                        Tutti i clienti
-                    </h1>
-                </div>
-                <div class="col-12">
-                    <div class="text-end">
-                        <a href="aggiungiCliente.jsp" class="btn btn-primary">Aggiungi Cliente <i class="fa-solid fa-user-plus"></i></a>
-                    </div>
-                </div>
-            </div>
+    </header>
+    <!-- Contenuto principale -->
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">
+                Lista Clienti
+            </h1>
+            <!-- <i class="fas fa-users fa-2x" ></i> -->
+            <a href="aggiungiCliente.jsp" class="btn btn-primary">
+                Aggiungi Cliente <i class="fas fa-user-plus ml-2"></i>
+            </a>
         </div>
-        
-        <!-- Contenuto della pagina -->
-        <div class="grid-container">
+        <hr>
+        <div class="row">
             <c:forEach var="cliente" items="${clienti}">
-                <div class="card grid-item">
-                    <div class="card-body">
-                        <a href="clienti/${cliente.id}" class="text-decoration-none"> <!-- Rimuove la sottolineatura dai link -->
-                            <h4 class="card-title fs-3">${cliente.nome} ${cliente.cognome}</h4>
-                        </a>
-                        <p class="card-text fs-6">Id carta: ${cliente.carta_id}</p>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">${cliente.nome}</h5>
+                            <h5 class="card-subtitle mb-2">${cliente.cognome}</h5>
+                            <a href="/clienti/${cliente.id}" class="btn btn-sm btn-outline-primary mt-2">
+                                Dettagli <i class="fas fa-chevron-circle-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
         </div>
-        
-        <!-- Inclusione del file "footer.jsp" -->
-        <jsp:include page="footer.jsp" />
-    </main>
+    </div>
     
+    <!-- Footer -->
+    <footer>
+        <jsp:include page="footer.jsp" />
+    </footer>
+
     <!-- Script di Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>

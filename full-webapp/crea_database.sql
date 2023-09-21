@@ -35,7 +35,8 @@
         INSERT INTO clienti (nome, cognome, carta_id, email, telefono)VALUES
         ('Mario', 'Rossi', 'AX9283F', 'mario@email.com', '555-1234'),
         ('Luigi', 'Bianchi', 'GE63820F', 'luigi@email.com', '555-5678'),
-        ('Giovanna', 'Verdi', 'UH27846G', 'giovanna@email.com', '555-9876');
+        ('Giovanna', 'Verdi', 'UH27846G', 'giovanna@email.com', '555-9876'),
+        ('Bob', 'Aggiustatutto', 'BY9213F', 'bobby@email.com', '555-3994');
 
         INSERT INTO camere (tipologia, descrizione, prezzo, immagine, bagno, condizionatore, disponibilita) VALUES
         ('Doppia', 'Descrizione doppia', 80.99, 'MainArticle.jpg', TRUE, FALSE, TRUE ),
