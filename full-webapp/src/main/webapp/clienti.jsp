@@ -13,13 +13,15 @@
     <!-- Link al file CSS di FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-<body>
-    <!-- Intestazione -->
+<b>
+    <!-- Contenuto principale -->
+    
+            <!-- Intestazione -->
     <header>
         <jsp:include page="header.jsp" />
     </header>
-    <!-- Contenuto principale -->
-    <div class="container mt-4">
+
+    <main class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="mb-0">
                 Lista Clienti
@@ -45,7 +47,7 @@
                 </div>
             </c:forEach>
         </div>
-    </div>
+    </main>
     
     <!-- Footer -->
     <footer>
