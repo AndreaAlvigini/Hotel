@@ -97,7 +97,8 @@ public class PrenotazioneDAO {
 
     // Metodi get
     String sql = "SELECT prenotazioni.*, " +
-            "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, " +
+            "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, "
+            +
             "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
             "FROM prenotazioni " +
             "JOIN clienti ON prenotazioni.id_cliente = clienti.id " +
@@ -150,36 +151,20 @@ public class PrenotazioneDAO {
         Prenotazione p = null;
 
         String sql = "SELECT prenotazioni.*, " +
-            "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, " +
-            "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
-            "FROM prenotazioni " +
-            "JOIN clienti ON prenotazioni.id_cliente = clienti.id " +
-            "JOIN camere ON prenotazioni.id_camera = camere.id " +
-            "WHERE prenotazioni.id = " + id + ";";
+                "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, "
+                +
+                "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
+                "FROM prenotazioni " +
+                "JOIN clienti ON prenotazioni.id_cliente = clienti.id " +
+                "JOIN camere ON prenotazioni.id_camera = camere.id " +
+                "WHERE prenotazioni.id = " + id + ";";
 
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
             if (rs.next()) {
-                p = new Prenotazione();
-
-                p.setId(rs.getInt("id"));
-                p.setIdCliente(rs.getInt("id_cliente"));
-                p.setIdCamera(rs.getInt("id_camera"));
-                p.setNotti(rs.getInt("notti"));
-                p.setCheckIn(rs.getDate("check_in"));
-                p.setCheckOut(rs.getDate("check_out"));
-                p.setTotale(rs.getDouble("totale"));
-
-                p.setClienteNome(rs.getString("clienteNome"));
-                p.setClienteCognome(rs.getString("clienteCognome"));
-                p.setClienteDocumento(rs.getString("clienteDocumento"));
-                p.setClienteEmail(rs.getString("clienteEmail"));
-                p.setClienteTelefono(rs.getString("clienteTelefono"));
-
-                p.setCameraNumero(rs.getInt("cameraNumero"));
-                p.setCameraTipologia(rs.getString("cameraTipologia"));
+                p = setAllData(rs);
             }
 
         } catch (SQLException e) {
@@ -190,23 +175,25 @@ public class PrenotazioneDAO {
     }
 
     // Prenotazioni filtrate
-    public List<Prenotazione> getPrenotazioniByFilter(String sql, String tipologiaCamera, int numeroCamera) {
+    public List<Prenotazione> getPrenotazioniByFilter(String sql, String tipologiaCamera, Date checkInDate) {
         List<Prenotazione> prenotazioni = new ArrayList<>();
 
         boolean filterByTipologia = tipologiaCamera != null && !tipologiaCamera.isEmpty();
-        boolean filterByNumeroCamera = numeroCamera > 0;
+        boolean orderByDate = checkInDate != null;
 
-        if (filterByTipologia || filterByNumeroCamera) {
+        if (filterByTipologia) {
             sql += " WHERE";
             if (filterByTipologia) {
                 sql += " camere.tipologia = ?";
-                if (filterByNumeroCamera) {
-                    sql += " AND";
+
+                if (orderByDate) {
+                    sql += " ORDER BY prenotazioni.check_in ASC";
                 }
             }
-            if (filterByNumeroCamera) {
-                sql += " camere.id = ?";
-            }
+
+            if (orderByDate) {
+                    sql += " ORDER BY prenotazioni.check_in ASC";
+                }
         }
 
         try {
@@ -215,9 +202,6 @@ public class PrenotazioneDAO {
 
             if (filterByTipologia) {
                 stmt.setString(paramIndex++, tipologiaCamera);
-            }
-            if (filterByNumeroCamera) {
-                stmt.setInt(paramIndex, numeroCamera);
             }
 
             ResultSet rs = stmt.executeQuery();

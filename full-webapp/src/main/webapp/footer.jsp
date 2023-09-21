@@ -8,7 +8,5 @@
         <li class="me-2"><small><a href="/clienti" class="text-decoration-none">Clienti</a></li></small>
         <li><small><a href="/prenotazioni" class="text-decoration-none">Prenotazioni</a></li></small>
     </ul>
-    <p>
-        <small>&#169; 2023 Greta Hotel. All Rights Reserved.</small>
-    </p>
+    <p><small>&#169; 2023 Greta Hotel. All Rights Reserved.</small></p>
 </footer>

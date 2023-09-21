@@ -24,12 +24,19 @@
         <div class="mb-3">
             <form action="/prenotazioni" method="GET">
                 <div class="d-flex">
-                    <div>
+                    <div class="me-2">
                         <!-- <label for="tipologia-camera">Tipologia camera</label> -->
                         <select name="tipologia-camera" id="tipologia-camera" class="form-select">
                             <option selected disabled>Scegli il tipo di camera</option>
                             <option value="Suite">Suite</option>
                             <option value="Doppia">Doppia</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="ordina-data-check-in" id="ordina-data-check-in" class="form-select">
+                            <option selected disabled>Ordina per check-in</option>
+                            <option value="check-in-recente">Più recente</option>
+                            <option value="check-in-vecchio">Meno recente</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-dark ms-2">Filtra</button>
