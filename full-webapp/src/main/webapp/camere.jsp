@@ -28,8 +28,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">${camera.id} - ${camera.tipologia}</h4>
                                     <p class="card-text">${camera.prezzo} € per notte</p>
-                                    <a href="camera.jsp?id=${camera.id}" class="btn btn-primary">Vai alla scheda</a>
-
+                                    <a href="/camere/${camera.id}" class="btn btn-primary">Vai alla scheda</a>
                                 </div>
                             </div>
                         

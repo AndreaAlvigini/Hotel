@@ -6,7 +6,7 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
+            <title>Camera #${camera.id}</title>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
                 crossorigin="anonymous">
             <link rel="stylesheet" href="./css/style.css">
@@ -17,7 +17,7 @@
     <main class="container">
                 
         <jsp:include page="header.jsp" />
-        <h1 style="text-align: center;">Dettagli della camera</h1>
+        <h1 style="text-align: center;">Dettagli della camera #${camera.id}</h1>
 
         <div class="grid-container">
                 <p>ID: ${camera.id}</p>
