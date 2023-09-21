@@ -9,10 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prenotazione #${prenotazione.id}</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
 </head>
 
 <body>
+    <jsp:include page="header.jsp" />
+
     <main class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2 border border-light-subtle rounded p-4">
@@ -20,7 +23,8 @@
                     <div>
                         <h3>Prenotazione #${prenotazione.id}</h3>
                     </div>
-                    <div class="d-md-flex justify-content-between align-items-center border-bottom border-light-subtle pb-3">
+                    <div
+                        class="d-md-flex justify-content-between align-items-center border-bottom border-light-subtle pb-3">
                         <div>
                             <h6>N. prenotazione</h6>
                             <p class="mb-md-0">#${prenotazione.id}</p>
@@ -51,13 +55,19 @@
                     </div>
                     <div class="mt-3">
                         <h6>Contatti</h6>
-                        <p class="mb-0"><a href="tel:${prenotazione.clienteTelefono}">${prenotazione.clienteTelefono}</a></p>
-                        <p class="mb-sm-0"><a href="mailto:${prenotazione.clienteEmail}">${prenotazione.clienteEmail}</a></p>
+                        <p class="mb-0"><a
+                                href="tel:${prenotazione.clienteTelefono}">${prenotazione.clienteTelefono}</a></p>
+                        <p class="mb-sm-0"><a
+                                href="mailto:${prenotazione.clienteEmail}">${prenotazione.clienteEmail}</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <jsp:include page="footer.jsp" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
