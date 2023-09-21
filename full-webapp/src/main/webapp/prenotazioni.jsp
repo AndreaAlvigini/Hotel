@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prenotazioni</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
 </head>
 
 <body>
@@ -24,13 +25,14 @@
             <form action="/prenotazioni" method="GET">
                 <div class="d-flex">
                     <div>
-                        <label for="tipologia-camera">Tipologia camera</label>
-                        <select name="tipologia-camera" id="tipologia-camera">
+                        <!-- <label for="tipologia-camera">Tipologia camera</label> -->
+                        <select name="tipologia-camera" id="tipologia-camera" class="form-select">
+                            <option selected disabled>Scegli il tipo di camera</option>
                             <option value="Suite">Suite</option>
                             <option value="Doppia">Doppia</option>
                         </select>
                     </div>
-                    <button type="submit">Filtra</button>
+                    <button type="submit" class="btn btn-dark ms-2">Filtra</button>
                 </div>
             </form>
         </div>
@@ -49,7 +51,8 @@
                         </div>
                         <div>
                             <h6>Camera</h6>
-                            <p class="mb-md-0">${prenotazione.cameraNumero} - ${prenotazione.cameraTipologia}</p>
+                            <p class="mb-md-0">${prenotazione.cameraNumero} - ${prenotazione.cameraTipologia}
+                            </p>
                         </div>
                         <div>
                             <h6>Totale</h6>
@@ -66,7 +69,8 @@
 
     <jsp:include page="footer.jsp" />
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
