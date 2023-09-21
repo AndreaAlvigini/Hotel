@@ -1,11 +1,7 @@
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager; // Importa DriverManager da java.sql
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,12 +36,10 @@ public class PrenotazioneServlet extends HttpServlet {
 
         // Controlla se i filtri sono applicati o meno
         String tipologiaCamera = request.getParameter("tipologia-camera");
-        String checkInDateString = request.getParameter("ordina-data-check-in");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date checkInDate = dateFormat.parse(checkInDateString);
+        String checkInDateOrder = request.getParameter("ordina-data-check-in");
 
-        if (tipologiaCamera != null && !tipologiaCamera.isEmpty()) {
-            prenotazioni = PrenotazioneDAO.getPrenotazioniByFilter(PrenotazioneDAO.sql, tipologiaCamera, checkInDate);
+        if (tipologiaCamera != null && !tipologiaCamera.isEmpty() || checkInDateOrder != null && !checkInDateOrder.isEmpty()) {
+            prenotazioni = PrenotazioneDAO.getPrenotazioniByFilter(PrenotazioneDAO.sql, tipologiaCamera, checkInDateOrder);
         } else {
             prenotazioni = PrenotazioneDAO.getAllPrenotazioni(PrenotazioneDAO.sql);
         }

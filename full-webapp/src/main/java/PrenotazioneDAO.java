@@ -97,8 +97,7 @@ public class PrenotazioneDAO {
 
     // Metodi get
     String sql = "SELECT prenotazioni.*, " +
-            "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, "
-            +
+            "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, " +
             "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
             "FROM prenotazioni " +
             "JOIN clienti ON prenotazioni.id_cliente = clienti.id " +
@@ -151,8 +150,7 @@ public class PrenotazioneDAO {
         Prenotazione p = null;
 
         String sql = "SELECT prenotazioni.*, " +
-                "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, "
-                +
+                "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, " +
                 "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
                 "FROM prenotazioni " +
                 "JOIN clienti ON prenotazioni.id_cliente = clienti.id " +
@@ -175,25 +173,31 @@ public class PrenotazioneDAO {
     }
 
     // Prenotazioni filtrate
-    public List<Prenotazione> getPrenotazioniByFilter(String sql, String tipologiaCamera, Date checkInDate) {
+    public List<Prenotazione> getPrenotazioniByFilter(String sql, String tipologiaCamera, String checkInDateOrder) {
         List<Prenotazione> prenotazioni = new ArrayList<>();
 
+        System.out.println(tipologiaCamera);
+        System.out.println(checkInDateOrder);
+
         boolean filterByTipologia = tipologiaCamera != null && !tipologiaCamera.isEmpty();
-        boolean orderByDate = checkInDate != null;
+        boolean orderByCheckIn = checkInDateOrder != null && !checkInDateOrder.isEmpty();
 
         if (filterByTipologia) {
             sql += " WHERE";
             if (filterByTipologia) {
                 sql += " camere.tipologia = ?";
 
-                if (orderByDate) {
-                    sql += " ORDER BY prenotazioni.check_in ASC";
+                if (orderByCheckIn) {
+                    sql += " ORDER BY prenotazioni.check_in";
+                    sql += " " + checkInDateOrder;
                 }
             }
-
-            if (orderByDate) {
-                    sql += " ORDER BY prenotazioni.check_in ASC";
-                }
+            
+        } else {
+            if (orderByCheckIn) {
+                sql += " ORDER BY prenotazioni.check_in";
+                sql += " " + checkInDateOrder;
+            }
         }
 
         try {
@@ -204,6 +208,7 @@ public class PrenotazioneDAO {
                 stmt.setString(paramIndex++, tipologiaCamera);
             }
 
+            System.out.println(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

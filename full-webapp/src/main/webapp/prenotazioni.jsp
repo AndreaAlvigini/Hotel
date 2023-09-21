@@ -35,8 +35,8 @@
                     <div>
                         <select name="ordina-data-check-in" id="ordina-data-check-in" class="form-select">
                             <option selected disabled>Ordina per check-in</option>
-                            <option value="check-in-recente">Più recente</option>
-                            <option value="check-in-vecchio">Meno recente</option>
+                            <option value="ASC">Più recente</option>
+                            <option value="DESC">Meno recente</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-dark ms-2">Filtra</button>
