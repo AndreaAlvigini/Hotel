@@ -15,8 +15,8 @@ Vediamo alcuni dei comandi inziziali per creare l'applicazione!
 
 creazione archetipo webapp tramite maven
 
-- mvn archetype:generate -D"groupId"=com.example -D"artifactId"=GestioneClienti -D"archetypeArtifactId"=maven-archetype-webapp -D"interactiveMode"=false
-  
+- mvn archetype:generate -D"groupId"=com.example -D"artifactId"=full-webapp -D"archetypeArtifactId"=maven-archetype-webapp -D"interactiveMode"=false
+
 - clean
 
 - mvn clean
@@ -135,7 +135,7 @@ public class Cliente {
     - cognome
     - carta_id
     - telefono
-  
+
 - Ho implementato i metodi **getter** per ogni campo, che restituiscono il valore del campo corrispondente.
 - Ho implementato i metodi **setter** per ogni campo, che impostano il valore del campo corrispondente.
 > Ora si possono utilizzare questi metodi getter e setter per accedere e modificare i campi dell'oggetto Clienti nell'applicazione
@@ -489,7 +489,7 @@ Le servlet sono mappate nel file `web.xml` e riportano le annotazioni *@WebServl
   <display-name>Archetype Created Web Application</display-name>
 
   <!-- Pagina clienti -->
-  <servlet>
+   <servlet>
     <servlet-name>ClienteServlet</servlet-name>
     <servlet-class>ClienteServlet</servlet-class>
   </servlet>
@@ -499,7 +499,7 @@ Le servlet sono mappate nel file `web.xml` e riportano le annotazioni *@WebServl
     <url-pattern>/clienti</url-pattern>
 
   </servlet-mapping>
-    <!--aggiunto DettaglioClienteServlet-->
+
   <servlet>
     <servlet-name>DettaglioClienteServlet</servlet-name>
     <servlet-class>DettaglioClienteServlet</servlet-class>
@@ -509,5 +509,276 @@ Le servlet sono mappate nel file `web.xml` e riportano le annotazioni *@WebServl
     <servlet-name>DettaglioClienteServlet</servlet-name>
     <url-pattern>/clienti/*</url-pattern>
     
+  </servlet-mapping>
+    
 </web-app>
 ```
+
+## JavaServer Pages: clienti.jsp
+Una JavaServer Page (JSP) è una pagina web dinamica che permette l'integrazione di codice Java all'interno di markup HTML.
+
+Clienti.jsp corrisponde alla pagina dove verranno visualizzati tutti i clienti nel database.
+
+Tramite dei tag JSLT possiamo semplicemente accedere ai dati dei nostri oggetti java ed utilizzare dei controlli di flusso o operazioni di iterazione. In questo caso iteriamo i dati di ogni cliente con la taglib:
+
+```jsp
+<c:forEach var="cliente" items="${clienti}">
+```
+di seguito  **clienti.jsp**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+        <!DOCTYPE html>
+        <html lang="it">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Clienti</title>
+            <!-- Link al file CSS di Bootstrap -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                crossorigin="anonymous">
+            <!-- Link al file CSS personalizzato -->
+            <link rel="stylesheet" href="./css/style.css">
+            <!-- Link al file CSS di FontAwesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        </head>
+
+        <body>
+            <!-- Intestazione -->
+            <jsp:include page="header.jsp" />
+            <main class="container">
+                <!-- Contenuto principale -->
+                <div class="container mt-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="mb-0">
+                            Lista Clienti
+                        </h1>
+                        <!-- <i class="fas fa-users fa-2x" ></i> -->
+                        <a href="aggiungiCliente.jsp" class="btn btn-primary">
+                            Aggiungi Cliente <i class="fas fa-user-plus ml-2"></i>
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <c:forEach var="cliente" items="${clienti}">
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${cliente.nome}</h5>
+                                        <h5 class="card-subtitle mb-2">${cliente.cognome}</h5>
+                                        <a href="/clienti/${cliente.id}" class="btn btn-sm btn-outline-primary mt-2">
+                                            Dettagli <i class="fas fa-chevron-circle-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+                
+            </main>
+            <!-- Footer -->
+            <jsp:include page="footer.jsp" />
+            <!-- Script di Bootstrap -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                crossorigin="anonymous"></script>
+        </body>
+
+        </html>
+```
+### cliente.jsp
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+        <!DOCTYPE html>
+        <html lang="it">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Clienti</title>
+            <!-- Link al file CSS di Bootstrap -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                crossorigin="anonymous">
+            <!-- Link al file CSS personalizzato -->
+            <link rel="stylesheet" href="./css/style.css">
+            <!-- Link al file CSS di FontAwesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        </head>
+
+        <body>
+            <!-- Intestazione -->
+            <jsp:include page="header.jsp" />
+            <main class="container">
+                <!-- Contenuto principale -->
+                <div class="container mt-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="mb-0">
+                            Lista Clienti
+                        </h1>
+                        <!-- <i class="fas fa-users fa-2x" ></i> -->
+                        <a href="aggiungiCliente.jsp" class="btn btn-primary">
+                            Aggiungi Cliente <i class="fas fa-user-plus ml-2"></i>
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <c:forEach var="cliente" items="${clienti}">
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${cliente.nome}</h5>
+                                        <h5 class="card-subtitle mb-2">${cliente.cognome}</h5>
+                                        <a href="/clienti/${cliente.id}" class="btn btn-sm btn-outline-primary mt-2">
+                                            Dettagli <i class="fas fa-chevron-circle-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+                
+            </main>
+            <!-- Footer -->
+            <jsp:include page="footer.jsp" />
+            <!-- Script di Bootstrap -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                crossorigin="anonymous"></script>
+        </body>
+
+        </html>
+```
+### aggiungiCliente.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <!DOCTYPE html>
+        <html lang="it">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Aggiungi Cliente</title>
+            <!-- Link al file CSS di Bootstrap -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                crossorigin="anonymous">
+            <!-- Link al file CSS personalizzato -->
+            <link rel="stylesheet" href="./css/style.css">
+            <!-- Link a fontawesome  -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+                integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+        </head>
+
+        <body>
+            <jsp:include page="header.jsp" />
+            <main class="container">
+                <!-- Includi l'header se necessario -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="text-left mb-4">Aggiungi Cliente</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form per l'aggiunta del cliente -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <form action="aggiungiCliente" method="post">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome:</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cognome" class="form-label">Cognome:</label>
+                                    <input type="text" class="form-control" id="cognome" name="cognome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="carta_id" class="form-label">Numero
+                                        Carta d'Identità:</label>
+                                    <input type="text" class="form-control" id="carta_id" name="carta_id" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Telefono:</label>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono">
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">
+                                        Aggiungi Cliente <i class="fas fa-user-plus ml-2"></i>
+                                    </button>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+
+            </main>
+
+            <!-- Footer -->
+            <jsp:include page="footer.jsp" />
+            <!-- Script di Bootstrap -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                crossorigin="anonymous"></script>
+        </body>
+
+        </html>
+```
+### erroreCliente.jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+        <!DOCTYPE html>
+        <html lang="it">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Aggiungi Cliente</title>
+            <!-- Link to Bootstrap CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                crossorigin="anonymous">
+            <!-- Link to custom CSS -->
+            <link rel="stylesheet" href="./css/style.css">
+            <!-- Link to FontAwesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+                integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+        </head>
+
+        <body>
+            <!-- visualizzazione dei dati del cliente -->
+            <jsp:include page="header.jsp" />
+            <main class="container">
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h1 class="text-left mb-4 fw-bold">
+                            <i class="fa-solid fa-id-card"></i> Il cliente esiste già!
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <h5>La carta d'identità che hai provato ad inserire è già associata ad un altro cliente,
+                            controlla meglio</h5>
+                        <a href="/clienti" class="btn btn-outline-primary mt-2">
+                            Torna alla lista clienti <i class="fas fa-chevron-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </main>
+            <!-- Inclusione il footer -->
+            <jsp:include page="footer.jsp" />
+            <!-- Script for Bootstrap -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                crossorigin="anonymous"></script>
+        </body>
+        </html>

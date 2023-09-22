@@ -18,10 +18,8 @@
 
         <body>
             <!-- Intestazione -->
+            <jsp:include page="header.jsp" />
             <main class="container">
-                <header>
-                    <jsp:include page="header.jsp" />
-                </header>
                 <!-- Contenuto principale -->
                 <div class="container mt-4">
                     <div class="d-flex justify-content-between align-items-center">
@@ -50,12 +48,10 @@
                         </c:forEach>
                     </div>
                 </div>
-
-                <!-- Footer -->
-                <footer>
-                    <jsp:include page="footer.jsp" />
-                </footer>
+                
             </main>
+            <!-- Footer -->
+            <jsp:include page="footer.jsp" />
             <!-- Script di Bootstrap -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous"></script>
