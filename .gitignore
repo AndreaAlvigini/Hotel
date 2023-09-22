@@ -4,3 +4,5 @@ target/
 databases
 .db
 .sql
+full-webapp/*.sql
+full-webapp/*.db
