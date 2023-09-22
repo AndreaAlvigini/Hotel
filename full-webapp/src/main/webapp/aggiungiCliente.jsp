@@ -22,7 +22,9 @@
     <body>
         <main class="container">
             <!-- Includi l'header se necessario -->
-            <%@ include file="header.jsp" %>
+            <header>
+                <jsp:include page="header.jsp" />
+            </header>
 
                 <div class="container">
                     <div class="row">
@@ -64,7 +66,7 @@
                         </div>
                     </div>
                     
-                <c:if test="${not empty requestScope.messaggio}">
+                <c:if test="${not empty respo.messaggio}">
                     <div class="messaggio">${requestScope.messaggio}</div>
                 </c:if>
 

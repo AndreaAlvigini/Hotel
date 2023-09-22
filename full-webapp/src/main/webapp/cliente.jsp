@@ -17,10 +17,10 @@
 </head>
 <body>
     <main class="container">
-        <!-- Include l'header -->
+        <!-- header -->
         <jsp:include page="header.jsp" />
 
-        <!-- Utilizza la classe "card" di Bootstrap per migliorare la visualizzazione dei dati del cliente -->
+        <!-- visualizzazione dei dati del cliente -->
         <div class="card mt-4">
             <div class="card-header">
                 <h1 class="text-left mb-4">
@@ -40,7 +40,7 @@
             </div>
         </div>
         
-        <!-- Include il footer -->
+        <!-- Inclusione il footer -->
         <jsp:include page="footer.jsp" />
     </main>
     

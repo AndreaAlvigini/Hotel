@@ -43,10 +43,9 @@ public class AggiungiClienteServlet extends HttpServlet {
         System.out.println(clienteEsiste);
 
         if (clienteEsiste) {
-            // Se il cliente esiste già, gestisci l'errore o reindirizza con un messaggio di
-            // errore
-            request.setAttribute("messaggio", "Il cliente esiste già.");
-            response.sendRedirect("/aggiungiCliente.jsp");
+            // Se il cliente esiste già, indirizza l'utente a una pagina di errore
+            
+            response.sendRedirect("/erroreCliente.jsp");
             
             
 

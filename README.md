@@ -142,6 +142,8 @@ public class Cliente {
 
 
 ## Interazione con il database: ClientiDAO.java
+Le classi `DAO` (Data Access Object) sono dedicate alle interazioni con il database SQL, conterranno dei metodi per la manipolazione dei dati specifici per ogni parte.
+In questo caso vediamo le calsse DAO per la sezione clienti
 
 ```java
 import java.sql.Connection;
@@ -334,6 +336,7 @@ public class ClienteServlet extends HttpServlet {
 
 ```
 Tramite questa servlet possiamo gestire le richieste e le risposte http mettendo in relazione la nostra pagina clienti.jsp con le funzionalità che abbiamo creato con i database.
+In particolare qui utilizziamo il metoso *getAllClienti*
 ## Servlet DettaglioClientiServlet.java
 
 Questa servlet invece serve per estrapolare i dati a frontend del singolo cliente per crearne una scheda in dettaglio, viene utilizzato infatti il metodo getClientebyId
@@ -402,6 +405,7 @@ public class DettaglioClienteServlet extends HttpServlet {
 }
 ```
 ## Servlet AggiungiClienteServlet.java
+Questa servlet esegue le operazioni in risposta a una richiesta *POST* inviata dall'utente, utilizziamo quindi un metodo doPost
 ```java
 import java.io.IOException;
 import java.sql.Connection;
@@ -448,10 +452,9 @@ public class AggiungiClienteServlet extends HttpServlet {
         System.out.println(clienteEsiste);
 
         if (clienteEsiste) {
-            // Se il cliente esiste già, gestisci l'errore o reindirizza con un messaggio di
-            // errore
-            request.setAttribute("messaggio", "Il cliente esiste già.");
-            response.sendRedirect("/aggiungiCliente.jsp");
+            // Se il cliente esiste già, indirizza l'utente a una pagina di errore
+            
+            response.sendRedirect("/erroreCliente.jsp");
             
             
 
@@ -468,17 +471,21 @@ public class AggiungiClienteServlet extends HttpServlet {
 
             // Dopo l'aggiunta del cliente, reindirizza l'utente alla pagina principale dei clienti
             response.sendRedirect("/clienti");
+            
         }
     }
 }
 ```
+Questa servlet gestisce l'aggiunta di nuovi clienti al sistema e verifica duplicati basati sul numero di carta d'identità. Se un cliente con lo stesso numero esiste già, reindirizza l'utente a una pagina di errore. Altrimenti, crea un nuovo cliente e lo inserisce nel database, quindi reindirizza l'utente alla pagina principale dei clienti.
+
 ## Routing: web.xml
-Questa servlet è stata mappata assieme alle altre nel file web.xml e riporta l'annotazione @WebServlet("/clienti/*"):
+Le servlet sono mappate nel file `web.xml` e riportano le annotazioni *@WebServlet* per il giusto indirizzamento:
 
 ```xml
 <!-- Il file web.xml serve per il routing, ovvero per lo smistamento delle richieste alle varie pagine, xml riguarda l'informazione e non la formattazione-->
 
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
 
   <!-- Pagina clienti -->
@@ -502,40 +509,5 @@ Questa servlet è stata mappata assieme alle altre nel file web.xml e riporta l'
     <servlet-name>DettaglioClienteServlet</servlet-name>
     <url-pattern>/clienti/*</url-pattern>
     
-  </servlet-mapping>
-
-  <!-- Pagina camere -->
-  <servlet>
-    <servlet-name>CameraServlet</servlet-name>
-    <servlet-class>CameraServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>CameraServlet</servlet-name>
-    <url-pattern>/camere</url-pattern>
-  </servlet-mapping>
-    <!-- AGGIUNGERE PARTI DI GRETA!!!! DETTAGLIO CAMEREA? -->
-  <!-- Pagina prenotazioni -->
-  <servlet>
-    <servlet-name>PrenotazioneServlet</servlet-name>
-    <servlet-class>PrenotazioneServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>PrenotazioneServlet</servlet-name>
-    <url-pattern>/prenotazioni</url-pattern>
-  </servlet-mapping>
-
-  <!-- Pagina prenotazioni/nuova -->
-  <servlet>
-    <servlet-name>PrenotazioneNuovaServlet</servlet-name>
-    <servlet-class>PrenotazioneNuovaServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>PrenotazioneNuovaServlet</servlet-name>
-    <url-pattern>/prenotazioni/nuova</url-pattern>
-    <url-pattern>/PrenotazioneNuovaServlet</url-pattern>
-  </servlet-mapping>
 </web-app>
 ```
