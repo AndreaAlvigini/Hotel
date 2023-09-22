@@ -22,6 +22,7 @@ public class PrenotazioneDAO {
         return prezzoTot;
     }
 
+    /* Inserisci nuova prenotazione nel database */
     public void inserisciPrenotazione(Cliente c, Camera r, int notti, Date checkInDate, Date checkOutDate,
             double totale) {
         try (PreparedStatement stmt = conn.prepareStatement(
@@ -38,6 +39,7 @@ public class PrenotazioneDAO {
         }
     }
 
+    /* Crea nuova prenotazione */
     public void creaPrenotazione(int camera_id, int notti, Date checkInDate, Date checkOutDate,
             int cliente_id, String cliente_carta_id, String cliente_nome, String cliente_cognome, String cliente_email,
             String cliente_telefono) {
@@ -63,6 +65,7 @@ public class PrenotazioneDAO {
         p.inserisciPrenotazione(cliente, camera, notti, checkInDate, checkOutDate, prezzo);
     }
 
+    /* Trova camere disponibili */
     public List<Camera> getCamereDisponibili(Date checkIn, Date checkOut) {
         List<Integer> idCamere = new ArrayList<>();
         PreparedStatement stmt = null;
