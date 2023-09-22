@@ -35,10 +35,11 @@ public class PrenotazioneSingolaServlet extends HttpServlet {
 
             try {
                 int idPrenotazione = Integer.parseInt(parametro);
-                Prenotazione prenotazione = PrenotazioneDAO.getPrenotazioneById(idPrenotazione);
+                Prenotazione prenotazione = PrenotazioneDAO.getPrenotazioneById(PrenotazioneDAO.sql, idPrenotazione);
 
                 if (prenotazione == null) {
                     response.sendRedirect("/prenotazioni");
+                    return;
                 }
                 
                 request.setAttribute("prenotazione", prenotazione);

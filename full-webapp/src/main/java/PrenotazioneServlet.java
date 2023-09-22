@@ -27,8 +27,7 @@ public class PrenotazioneServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Camera> camere = CameraDAO.getAllCamere();
         request.setAttribute("camere", camere);
 

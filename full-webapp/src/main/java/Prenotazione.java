@@ -5,7 +5,6 @@ public class Prenotazione {
     private int id;
     private int idCliente;
     private int idCamera;
-
     private Date checkIn;
     private Date checkOut;
     private int notti;
@@ -20,10 +19,9 @@ public class Prenotazione {
     private int cameraNumero;
     private String cameraTipologia;
 
-    public Prenotazione(){
-    }
+    public Prenotazione() {}
 
-    public Prenotazione(int id, int idCliente, int idCamera, int notti, Date checkIn, Date checkOut, Double totale){
+    public Prenotazione(int id, int idCliente, int idCamera, int notti, Date checkIn, Date checkOut, Double totale) {
         this.id = id;
         this.idCliente = idCliente;
         this.idCamera = idCamera;
@@ -33,54 +31,59 @@ public class Prenotazione {
         this.totale = totale;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
-    public void setId(int id){
+
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getIdCliente(){
+    public int getIdCliente() {
         return idCliente;
     }
-    public void setIdCliente(int idCliente){
+
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
-    public int getIdCamera(){
+    public int getIdCamera() {
         return idCamera;
     }
-    public void setIdCamera(int idCamera){
+
+    public void setIdCamera(int idCamera) {
         this.idCamera = idCamera;
     }
 
-    public Date getCheckIn(){
+    public Date getCheckIn() {
         return checkIn;
     }
-    public void setCheckIn(Date checkIn){
+
+    public void setCheckIn(Date checkIn) {
         this.checkIn = checkIn;
     }
 
-    public Date getCheckOut(){
+    public Date getCheckOut() {
         return checkOut;
     }
-    public void setCheckOut(Date checkOut){
+
+    public void setCheckOut(Date checkOut) {
         this.checkOut = checkOut;
     }
 
-    public int getNotti () {
+    public int getNotti() {
         return notti;
     }
 
-    public void setNotti (int notti) {
+    public void setNotti(int notti) {
         this.notti = notti;
     }
 
-    public Double getTotale(){
+    public Double getTotale() {
         return totale;
     }
 
-    public void setTotale(Double totale){
+    public void setTotale(Double totale) {
         this.totale = totale;
     }
 

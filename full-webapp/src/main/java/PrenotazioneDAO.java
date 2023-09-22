@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrenotazioneDAO {
-    private Connection conn;// connessione
+    private Connection conn;
 
     public PrenotazioneDAO(Connection conn) {
         this.conn = conn;
     }
 
+    /* Calcola prezzo */
     public double calcolaPrezzo(double prezzo, int notti) {
 
         double prezzoTot = prezzo * notti;
@@ -34,7 +35,6 @@ public class PrenotazioneDAO {
             stmt.setDouble(5, 3);
 
         } catch (SQLException e) {
-            // gestisci l'eccezione
             e.printStackTrace();
         }
     }
@@ -98,7 +98,7 @@ public class PrenotazioneDAO {
         return camereDisponibili;
     }
 
-    // Metodi get
+    // Variabili e metodi ausiliari
     String sql = "SELECT prenotazioni.*, " +
             "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, " +
             "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
@@ -108,6 +108,7 @@ public class PrenotazioneDAO {
 
     public Prenotazione setAllData(ResultSet rs) throws SQLException {
         Prenotazione p = new Prenotazione();
+
         p.setId(rs.getInt("id"));
         p.setIdCliente(rs.getInt("id_cliente"));
         p.setIdCamera(rs.getInt("id_camera"));
@@ -148,33 +149,6 @@ public class PrenotazioneDAO {
         return prenotazioni;
     }
 
-    // Prenotazione by id
-    public Prenotazione getPrenotazioneById(int id) {
-        Prenotazione p = null;
-
-        String sql = "SELECT prenotazioni.*, " +
-                "clienti.nome AS clienteNome, clienti.cognome AS clienteCognome, clienti.carta_id AS clienteDocumento, clienti.email AS clienteEmail, clienti.telefono AS clienteTelefono, " +
-                "camere.id AS cameraNumero, camere.tipologia AS cameraTipologia " +
-                "FROM prenotazioni " +
-                "JOIN clienti ON prenotazioni.id_cliente = clienti.id " +
-                "JOIN camere ON prenotazioni.id_camera = camere.id " +
-                "WHERE prenotazioni.id = " + id + ";";
-
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            if (rs.next()) {
-                p = setAllData(rs);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return p;
-    }
-
     // Prenotazioni filtrate
     public List<Prenotazione> getPrenotazioniByFilter(String sql, String tipologiaCamera, String checkInDateOrder) {
         List<Prenotazione> prenotazioni = new ArrayList<>();
@@ -211,7 +185,6 @@ public class PrenotazioneDAO {
                 stmt.setString(paramIndex++, tipologiaCamera);
             }
 
-            System.out.println(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -224,5 +197,25 @@ public class PrenotazioneDAO {
         }
 
         return prenotazioni;
+    }
+
+    // Prenotazione by id
+    public Prenotazione getPrenotazioneById(String sql, int id) {
+        Prenotazione p = null;
+
+        try {
+            sql += " WHERE prenotazioni.id = " + id + ";";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                p = setAllData(rs);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return p;
     }
 }

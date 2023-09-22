@@ -30,6 +30,7 @@
                             <option selected disabled>Scegli il tipo di camera</option>
                             <option value="Suite">Suite</option>
                             <option value="Doppia">Doppia</option>
+                            <option value="Singola">Singola</option>
                         </select>
                     </div>
                     <div>
