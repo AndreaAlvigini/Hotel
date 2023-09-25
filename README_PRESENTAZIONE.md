@@ -1,4 +1,3 @@
-# FARE TESTO PER BLOG
 # GretaHotel
 ## Introduzione
 GretaHotel è un'applicazione di database management pensata per la reception di un hotel che permette una facile gestione dei dati relativi a camere, clienti e prenotazioni.
@@ -43,24 +42,20 @@ full-webapp/
 
 L'architettura del progetto è suddivisa in tre parti:
 
-- Modello
+### 1 Modello
 I modelli hanno il compito di mettere a disposizione i campi del database
-- DAO
+### 2 DAO
 Le classi di tipo DAO contengono le istruzioni per manipolare i dati
-- Servlet
+### 3 Servlet
 Le servlet gestiscono le connessioni e le interazioni nelle corrispettive pagine
 
-- jsp
+Inoltre abbiamo utilizzato le seguenti tecnologie:
+### JSP
 I jsp riguardano la presentazione dei dati
-
-- SQLite
-SQLite è un databa se relazionale utilizzato per memorizzare i dati dell'applicazione
-
-- Funzionamento
-SQLite un database relazionale utilizzato per memorizzare i dati dell'applicazione, nel dettaglio i modelli modelli hanno il compito di mettere a disposizione i campi del database, le classi di tipo DAO contengono le istruzioni per manipolare i dati, le servlet gestiscono le connessioni e le interazioni nelle corrispettive pagine. i jsp riguardano la presentazione dei dati.
+### SQLite
+SQLite è un database relazionale utilizzato per memorizzare i dati dell'applicazione
 
 ## Funzionalità
-
 Quest'applicazione è stata progettata per essere utilizzata da una reception perciò contiene tutti gli strumenti per gestire camere, clienti e prenotazioni come specificato in funzionamento, con il minimo sforzo da parte dll'operatore.
 
 Dotata di un'interfaccia semplice e pulita, l'applicazione è divisa in tre sezioni distinte, ciascuna dedicata alle operazioni da eseguire su una delle tre tipologie di dato di cui si occupa.
@@ -77,4 +72,4 @@ Le tecnologie con cui è stata creata sono:
 - Fontawesome: libreria icone per migliorare interfaccia utente
 
 ## Conclusioni
-Il progetto offre solo una solida visualizzazione dei dati, ma in futuro può essere completato dall'inserimento e dalla rimozione direttamente dall'interfaccia.
+Il progetto offre solo una solida visualizzazione dei dati, ma in futuro può essere completato con la possibilità di una totale manipolazione dei dati direttamente dall'interfaccia.
