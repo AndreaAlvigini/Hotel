@@ -35,6 +35,17 @@
     <url-pattern>/camere</url-pattern>
   </servlet-mapping>
 
+  <!-- Pagina dettaglio-->
+  <servlet>
+    <servlet-name>DettaglioCameraServlet</servlet-name>
+    <servlet-class>DettaglioCameraServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DettaglioCameraServlet</servlet-name>
+    <url-pattern>/camere/*</url-pattern>
+  </servlet-mapping>
+
   <!-- Pagina prenotazioni -->
   <servlet>
     <servlet-name>PrenotazioneServlet</servlet-name>

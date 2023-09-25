@@ -41,29 +41,25 @@ public class CameraDAO {
         return camere; // riporta la lista di Camere
     }
 
-    public Camera getCameraById(int id) { // metodo di selezione Camera in base all'id (in input) che restituisce un
-                                          // oggetto Camera
+    public Camera getCameraById(int id) { // metodo di selezione Camera in base all'id (in input) che restituisce un oggetto Camera
         Camera c = null; // creazione oggetto Camera vuoto
 
-        try (PreparedStatement stmt = this.conn.prepareStatement("SELECT * FROM camere WHERE id = ?")) { // selezione dalla
-                                                                                                    // tabella prodotti
-                                                                                                    // in base all'id
+        String sql= "SELECT * FROM camere WHERE camere.id = " + id + ";";
 
-            stmt.setInt(1, id);
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) { // assegnazione dei valori all'oggetto Camera in base alla riga dell'id fornito
-                    c = new Camera();
-                    c.setId(rs.getInt("id"));
-                    c.setTipologia(rs.getString("tipologia"));
-                    c.setDescrizione(rs.getString("descrizione"));
-                    c.setBagno(rs.getBoolean("bagno"));
-                    c.setCondizionatore(rs.getBoolean("condizionatore"));
-                    c.setPrezzo(rs.getDouble("prezzo"));
-                    c.setImmagine(rs.getString("immagine"));
-                }
+            if (rs.next()) { // assegnazione dei valori all'oggetto Camera in base alla riga dell'id fornito
+                c = new Camera();
+                c.setId(rs.getInt("id"));
+                c.setTipologia(rs.getString("tipologia"));
+                c.setDescrizione(rs.getString("descrizione"));
+                c.setBagno(rs.getBoolean("bagno"));
+                c.setCondizionatore(rs.getBoolean("condizionatore"));
+                c.setPrezzo(rs.getDouble("prezzo"));
+                c.setImmagine(rs.getString("immagine"));
             }
-
         } catch (SQLException e) {
             // gestisci l'eccezione
             e.printStackTrace();
