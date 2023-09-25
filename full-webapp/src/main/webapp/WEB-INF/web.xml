@@ -14,8 +14,19 @@
   <servlet-mapping>
     <servlet-name>ClienteServlet</servlet-name>
     <url-pattern>/clienti</url-pattern>
+
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>DettaglioClienteServlet</servlet-name>
+    <servlet-class>DettaglioClienteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DettaglioClienteServlet</servlet-name>
+    <url-pattern>/clienti/*</url-pattern>
+    
+  </servlet-mapping>
   <!-- Pagina camere -->
   <servlet>
     <servlet-name>CameraServlet</servlet-name>
@@ -48,5 +59,15 @@
     <servlet-name>PrenotazioneNuovaServlet</servlet-name>
     <url-pattern>/prenotazioni/nuova</url-pattern>
     <url-pattern>/PrenotazioneNuovaServlet</url-pattern>
+  </servlet-mapping>
+  <!-- aggiunta aggiungiiclienteservlet -->
+  <servlet>
+    <servlet-name>AggiungiClienteServlet</servlet-name>
+    <servlet-class>AggiungiClienteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AggiungiClienteServlet</servlet-name>
+    <url-pattern>/aggiungiCliente</url-pattern>
   </servlet-mapping>
 </web-app>

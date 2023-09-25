@@ -1,4 +1,4 @@
-//Questa é una classe che rappresenta il modello di dati per Cliente e possiede solo i campi che corrispondono alle colonne nelle tabelle del database.
+//Questa é una classe che rappresenta il modello di dati per Cliente e possiede solo i campi del database.
 public class Cliente {
     // Specifico i campi che appartengono alla classe Cliente
     private int id;
