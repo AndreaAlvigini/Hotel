@@ -16,17 +16,22 @@
         <body>
             <jsp:include page="header.jsp" />
             <main class="container">
-                <h1 style="text-align: center;">Tutte le camere</h1>
-
+                <div class="container mt-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="mb-0">
+                            Tutte le camere
+                        </h1>
+                    </div>
+                    <hr>
                 <div class="grid-container">
                     <c:forEach var="camera" items="${camere}">
                         
-                            <div class="card grid-item">
+                            <div class="card grid-item mb-4">
                                 <img src="./assets/foto_camere/${camera.immagine}"
                                     alt="foto della camera numero ${camera.id}" class="card-img-top">
                                 <div class="card-body">
                                     <h4 class="card-title">${camera.id} - ${camera.tipologia}</h4>
-                                    <p class="card-text">${camera.prezzo} € per notte</p>
+                                    <p class="card-text">${camera.prezzo}/notte</p>
                                     <a href="/camere/${camera.id}" class="btn btn-primary">Vai alla scheda</a>
                                 </div>
                             </div>

@@ -41,22 +41,26 @@ public class DettaglioClienteServlet extends HttpServlet {
             String parametro = parts[parts.length - 1];
 
             try {
-                //assegno alla variabile idCliente e faccio un parse del parametro che contenente l'id
+                // assegno alla variabile idCliente e faccio un parse del parametro che
+                // contenente l'id
                 int idCliente = Integer.parseInt(parametro);
-                //Creo un oggetto cliente che restituisce i dati del cliente selezionato tramite l'id che abbiamo estrapolato
+                // Creo un oggetto cliente che restituisce i dati del cliente selezionato
+                // tramite l'id che abbiamo estrapolato
                 Cliente cliente = clienteDAO.getClienteById(idCliente);
-                // Imposta l'attributo "cliente" nella richiesta, che sarà utilizzato dalla pagina JSP
+                // Imposta l'attributo "cliente" nella richiesta, che sarà utilizzato dall
+                //  pagina JSP
                 request.setAttribute("cliente", cliente);
+                // Prepara un dispatcher per inoltrare la richiesta alla pagina JSP
+                // "cliente.jsp"
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente.jsp");
+                // Inoltra la richiesta alla pagina JSP per la visualizzazione dei dati
+                dispatcher.forward(request, response);
 
             } catch (NumberFormatException e) {
-                response.sendRedirect("/");
+                response.sendRedirect("/clienti");
             }
 
-            // Prepara un dispatcher per inoltrare la richiesta alla pagina JSP
-            // "cliente.jsp"
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/cliente.jsp");
-            // Inoltra la richiesta alla pagina JSP per la visualizzazione dei dati
-            dispatcher.forward(request, response);
+            
         }
     }
 }
