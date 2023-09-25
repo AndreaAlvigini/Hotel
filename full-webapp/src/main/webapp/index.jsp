@@ -10,7 +10,7 @@
     <title>Greta Hotel - Homepage</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body style="background-image: url('${pageContext.request.contextPath}/assets/homepage.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;" class="vh-100 overlay-container">
