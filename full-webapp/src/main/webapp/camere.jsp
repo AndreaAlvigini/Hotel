@@ -14,9 +14,8 @@
         </head>
 
         <body>
+            <jsp:include page="header.jsp" />
             <main class="container">
-                
-                <jsp:include page="header.jsp" />
                 <h1 style="text-align: center;">Tutte le camere</h1>
 
                 <div class="grid-container">
@@ -27,16 +26,15 @@
                                     alt="foto della camera numero ${camera.id}" class="card-img-top">
                                 <div class="card-body">
                                     <h4 class="card-title">${camera.id} - ${camera.tipologia}</h4>
-                                    <p class="card-text">${camera.prezzo} â‚¬ per notte</p>
+                                    <p class="card-text">${camera.prezzo} € per notte</p>
                                     <a href="/camere/${camera.id}" class="btn btn-primary">Vai alla scheda</a>
                                 </div>
                             </div>
                         
                     </c:forEach>
                 </div>
-
-                <jsp:include page="footer.jsp" />
             </main>
+            <jsp:include page="footer.jsp" />
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous"></script>
         </body>

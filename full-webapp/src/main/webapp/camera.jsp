@@ -13,23 +13,14 @@
         </head>
 
 <body>
-
+    <jsp:include page="header.jsp" />
     <main class="container">
-                
-        <jsp:include page="header.jsp" />
         <h1 style="text-align: center;">Dettagli della camera #${camera.id}</h1>
 
         <div class="grid-container">
             <p>ID: ${camera.id}</p>
             <p>Tipologia: ${camera.tipologia}</p>
             <p>Descrizione: ${camera.descrizione}</p>
-            <!-- <p>Bagno:
-                <input type="checkbox" name="bagno" value="true" ${bagnoSelected ? 'checked' : ''} disabled>
-            </p>
-            <p>Condizionatore:
-                <input type="checkbox" name="condizionatore" value="true" ${condizionatoreSelected ? 'checked' : ''} disabled>
-            </p> -->
-            <!-- <p>Prezzo: ${camera.prezzo} euro per notte</p> -->
             <img src="{pageContext.request.contextPath}/assets/foto_camere/${camera.immagine}" alt="foto della camera" class="card-img-top float-start">
             
         </div>
@@ -69,5 +60,8 @@
             </tbody>
         </table>
     </main>
+    <jsp:include page="footer.jsp" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
 </body>
 </html>

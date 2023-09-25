@@ -45,18 +45,7 @@ public class DettaglioCameraServlet extends HttpServlet {
                 return;
             }
 
-            // Recupera i valori dei parametri per i checkbox dalla richiesta
-            String bagnoParam = request.getParameter("bagno");
-            String condizionatoreParam = request.getParameter("condizionatore");
-
-            // Converte i parametri in valori booleani
-            boolean bagnoSelected = "true".equals(bagnoParam);
-            boolean condizionatoreSelected = "true".equals(condizionatoreParam);
-
-            // Passa i valori dei checkbox come attributi alla JSP
             request.setAttribute("camera", camera);
-            request.setAttribute("bagnoSelected", bagnoSelected);
-            request.setAttribute("condizionatoreSelected", condizionatoreSelected);
 
         } catch (NumberFormatException e) {
             response.sendRedirect("/");
