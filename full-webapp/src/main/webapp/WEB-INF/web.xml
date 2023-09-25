@@ -1,10 +1,7 @@
-
-
 <!-- Il file web.xml serve per il routing, ovvero per lo smistamento delle richieste alle varie pagine, xml riguarda l'informazione e non la formattazione-->
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-
   <!-- Pagina clienti -->
   <servlet>
     <servlet-name>ClienteServlet</servlet-name>
@@ -47,6 +44,17 @@
   <servlet-mapping>
     <servlet-name>PrenotazioneServlet</servlet-name>
     <url-pattern>/prenotazioni</url-pattern>
+  </servlet-mapping>
+
+  <!-- Pagina prenotazione singola -->
+  <servlet>
+    <servlet-name>PrenotazioneSingolaServlet</servlet-name>
+    <servlet-class>PrenotazioneSingolaServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PrenotazioneSingolaServlet</servlet-name>
+    <url-pattern>/prenotazioni/*</url-pattern>
   </servlet-mapping>
 
   <!-- Pagina prenotazioni/nuova -->

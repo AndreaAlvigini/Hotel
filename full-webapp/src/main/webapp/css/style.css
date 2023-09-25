@@ -17,14 +17,37 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (max-width: 576px) {
     .grid-container {
         grid-template-columns: repeat(1, 1fr);
     }
 }
+
 /* @media (max-width: 264px) {
     .grid-container {
         grid-template-columns: repeat(1, 1fr);
         display: block;
     }
 } */
+
+/* Homepage */
+.overlay-container {
+    position: relative;
+}
+
+.overlay {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
