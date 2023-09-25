@@ -4,55 +4,62 @@
 GretaHotel è un'applicazione di database management pensata per la reception di un hotel che permette una facile gestione dei dati relativi a camere, clienti e prenotazioni.
 
 ## Struttura
-- farlo sul main
-Di seguito mostrimao la build di maven nella sua divisione in folders
+Di seguito mostrimao delle cartelle del progetto:
 
 full-webapp/
----src/
--------main/
------------java/
-----------------Cliente.java
-----------------ClienteDAO.java
-----------------ClienteServlet.java
-----------------AggiungiClienteServlet.java
-----------------DettaglioClienteServlet.java
-----------------Camera.java
-----------------CameraDAO.java
-----------------CameraServlet.java
-----------------Prenotazione.java
-----------------PrenotazioneDAO.java
-----------------PrenotazioneServlet.java
-----------------PrenotazioneSingolaServlet.java
----resources/
----crea_database.sql
----webapp/
----------WEB-INF/
----------web.xml
----clienti.jsp
----cliente.jsp
----erroreCliente.jsp
----aggiungiCliente.jsp
----camera.jsp
----camere.jsp
----prenotazione.jsp
----prenotazioni.jsp
+- src/
+- - main/
+- - - java/
+- - - - Cliente.java
+- - - - ClienteDAO.java
+- - - - ClienteServlet.java
+- - - - AggiungiClienteServlet.java
+- - - - DettaglioClienteServlet.java
+- - - - Camera.java
+- - - - CameraDAO.java
+- - - - CameraServlet.java
+- - - - Prenotazione.java
+- - - - PrenotazioneDAO.java
+- - - - PrenotazioneServlet.java
+- - - - PrenotazioneSingolaServlet.java
+- resources/
+- - crea_database.sql
+- webapp/
+- - clienti.jsp
+- - cliente.jsp
+- - erroreCliente.jsp
+- - aggiungiCliente.jsp
+- - camera.jsp
+- - camere.jsp
+- - prenotazione.jsp
+- - prenotazioni.jsp
+- - index.jsp
+- - - assets
+- - - - foto_camere
+- - - WEB-INF/
+- - - - web.xml
+- - - css
+- - - - style.css
+
+L'architettura del progetto è suddivisa in tre parti:
 
 - Modello
-Le classi modello ecc rappresentano l'entità del Cliente, Camera, Prenotazioni
+I modelli hanno il compito di mettere a disposizione i campi del database
 - DAO
-Le classi dao ecc CameraDAO, ClientiDAO, PrenotazioneDAO
+Le classi di tipo DAO contengono le istruzioni per manipolare i dati
 - Servlet
-La servlet clienti contiene la lista dei clienti non filtrata.
-la servlet cliente contiene i detttagli del cliente selezionato
-Le servlet relative a camere e prenotazioni seguono la stessa logica
+Le servlet gestiscono le connessioni e le interazioni nelle corrispettive pagine
+
 - jsp
-Jsp
+I jsp riguardano la presentazione dei dati
+
+- SQLite
+SQLite è un databa se relazionale utilizzato per memorizzare i dati dell'applicazione
+
 - Funzionamento
-SQLite un databse relazionale utilizzato per memorizzare i dati dell'applicazione, nel dettaglio i modelli modelli hanno il compito di mettere a disposizione i campi del database, le classi di tipo DAO contengono le istruzioni per manipolare i dati, le servlet gestiscono le connessioni e le interazioni nelle corrispettive pagine. i jsp riguardano la presentazione dei dati.
+SQLite un database relazionale utilizzato per memorizzare i dati dell'applicazione, nel dettaglio i modelli modelli hanno il compito di mettere a disposizione i campi del database, le classi di tipo DAO contengono le istruzioni per manipolare i dati, le servlet gestiscono le connessioni e le interazioni nelle corrispettive pagine. i jsp riguardano la presentazione dei dati.
 
 ## Funzionalità
-Cosa può fare una o un receptionist?
-Elencare le azioni!
 
 Quest'applicazione è stata progettata per essere utilizzata da una reception perciò contiene tutti gli strumenti per gestire camere, clienti e prenotazioni come specificato in funzionamento, con il minimo sforzo da parte dll'operatore.
 
@@ -69,5 +76,5 @@ Le tecnologie con cui è stata creata sono:
 - Bootstrap: libreria css e script per lo styling delle pagine
 - Fontawesome: libreria icone per migliorare interfaccia utente
 
-## conclusioni
-IL progetto offre solo la visualizzazione dei dati, ma in futuro può essere completato dall'inserimento e dalla rimozione direttamente dall'interfaccia
+## Conclusioni
+Il progetto offre solo una solida visualizzazione dei dati, ma in futuro può essere completato dall'inserimento e dalla rimozione direttamente dall'interfaccia.
